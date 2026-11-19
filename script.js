@@ -309,20 +309,31 @@ function initCinematicGate() {
   initAmbientSparkles();
 
   let isOpening = false;
+  let hasTransitioned = false;
 
-  function openEnvelopeSequence() {
+  function openEnvelopeSequence(e) {
     if (isOpening) return;
     isOpening = true;
 
+    if (e && e.stopPropagation) {
+      e.stopPropagation();
+    }
+
     // 1. Play default music (Ullam Paadum - 2 States trimmed at 15s) immediately on user interaction
-    if (window.weddingAudio) {
-      window.weddingAudio.play();
+    try {
+      if (window.weddingAudio) {
+        window.weddingAudio.play();
+      }
+    } catch (err) {
+      console.warn('Audio play notice:', err);
     }
 
     // 2. Play acoustic temple bell chime
-    if (window.weddingAudio && window.weddingAudio.playIndianTempleGhanta) {
-      window.weddingAudio.playIndianTempleGhanta();
-    }
+    try {
+      if (window.weddingAudio && typeof window.weddingAudio.playIndianTempleGhanta === 'function') {
+        window.weddingAudio.playIndianTempleGhanta();
+      }
+    } catch (err) {}
 
     // 3. Stage 1: Break royal wax seal with expanding shockwave ripple & light beam
     if (sealBtn) {
@@ -331,47 +342,96 @@ function initCinematicGate() {
     if (lightBeam) {
       lightBeam.classList.add('active');
     }
+    if (envelopeStage) {
+      envelopeStage.classList.add('opening');
+    }
 
     // 4. Trigger golden sparkle & flower cascade
-    if (window.triggerFlowerShower) {
-      window.triggerFlowerShower();
-    }
+    try {
+      if (window.triggerFlowerShower) {
+        window.triggerFlowerShower();
+      }
+    } catch (err) {}
 
     // 5. Stage 2: After 1100ms, reveal 3D Lord Ganesha Scene with halo rings & rose petal shower
     setTimeout(() => {
       if (envelopeStage) {
-        envelopeStage.style.opacity = '0';
-        envelopeStage.style.transform = 'scale(1.12)';
-        envelopeStage.style.pointerEvents = 'none';
+        envelopeStage.classList.add('vanished');
       }
       if (ganeshaStage) {
         ganeshaStage.classList.add('active');
       }
-      if (window.triggerRosePetalBurst) {
-        window.triggerRosePetalBurst();
-      }
+      try {
+        if (window.triggerRosePetalBurst) {
+          window.triggerRosePetalBurst();
+        }
+      } catch (err) {}
     }, 1100);
 
-    // 6. Auto-advance to main invitation after 6.5s if guest doesn't click continue
+    // 6. Auto-advance to main invitation after 7.5s if guest doesn't click continue
     setTimeout(() => {
       enterMainInvitation();
-    }, 7000);
+    }, 7500);
   }
 
-  function enterMainInvitation() {
+  function enterMainInvitation(e) {
+    if (hasTransitioned) return;
+    hasTransitioned = true;
+
+    if (e && e.stopPropagation) {
+      e.stopPropagation();
+    }
+
     document.body.classList.remove('envelope-active');
     if (gate) {
       gate.style.opacity = '0';
-      gate.style.transform = 'scale(1.05)';
+      gate.style.pointerEvents = 'none';
       setTimeout(() => {
         gate.style.display = 'none';
-      }, 1100);
+        try {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (e) {}
+      }, 1000);
     }
   }
 
-  if (sealBtn) sealBtn.addEventListener('click', openEnvelopeSequence);
-  if (envelopeStage) envelopeStage.addEventListener('click', openEnvelopeSequence);
-  if (continueBtn) continueBtn.addEventListener('click', enterMainInvitation);
+  // Universal touch & click handlers for iOS / Android mobile
+  const openEvents = ['pointerup', 'touchend', 'click'];
+  openEvents.forEach(evt => {
+    if (sealBtn) {
+      sealBtn.addEventListener(evt, (e) => {
+        if (e.cancelable && evt === 'touchend') e.preventDefault();
+        openEnvelopeSequence(e);
+      }, { passive: false });
+    }
+    if (envelopeStage) {
+      envelopeStage.addEventListener(evt, (e) => {
+        openEnvelopeSequence(e);
+      });
+    }
+    if (gate) {
+      gate.addEventListener(evt, (e) => {
+        if (!isOpening) openEnvelopeSequence(e);
+      });
+    }
+  });
+
+  const continueEvents = ['pointerup', 'touchend', 'click'];
+  continueEvents.forEach(evt => {
+    if (continueBtn) {
+      continueBtn.addEventListener(evt, (e) => {
+        if (e.cancelable && evt === 'touchend') e.preventDefault();
+        enterMainInvitation(e);
+      }, { passive: false });
+    }
+    if (ganeshaStage) {
+      ganeshaStage.addEventListener(evt, (e) => {
+        if (e.target === ganeshaStage || e.target.classList.contains('ganesha-hd-art') || e.target.classList.contains('ganesha-halo-glow-ring')) {
+          enterMainInvitation(e);
+        }
+      });
+    }
+  });
 }
 
 function initAmbientSparkles() {
