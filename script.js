@@ -1,48 +1,43 @@
 /**
  * ==========================================================
- * WEDDING INVITATION — JAVASCRIPT
- * Prasoon & Navya • 27–31 January 2027 (Deoghar & Dhanbad)
- * & Grand Reception: 6 February 2027 (Ranchi)
+ * ROYAL WEDDING INVITATION — JAVASCRIPT (V2 EDITORIAL ARTWORK)
+ * Prasoon & Navya • 27–31 January 2027 & Reception 6 February 2027
  *
- * Features:
- *  1. Authentic Sacred Bilva Patra & Indian Wedding Flowers (NO HEARTS)
- *  2. Cinematic 3D Envelope & Lord Ganesha Reveal Gate
- *  3. Interactive "Scratch to Reveal" Three-Card Grid (Canvas Engine)
- *  4. Shiva-Parvati Divine Actions (Bel Patra Shower & Mandir Ghanta)
- *  5. Fullscreen Lagna Patrika Viewer
- *  6. Live Countdown Timer to 31st January 2027
- *  7. Calendar Integration (Google Calendar & .ics)
- *  8. Venue Copy Address
- *  9. Share Invitation via WhatsApp / Web Share
+ * Modules:
+ *  1. Authentic Sacred Bilva Patra & Rose Petals Shower (NO HEARTS)
+ *  2. Cinematic 3D Envelope, Shockwave Seal Break & 3D Ganesha Reveal
+ *  3. Interactive "Scratch to Reveal" 3-Card Engine (Canvas Gold Foil Scratch)
+ *  4. Shiva-Parvati Divine Actions (Bel Patra & Mandir Ghanta Naad)
+ *  5. Countdown Timer to 31st January 2027 (2 Digits for Days)
+ *  6. Calendar Integration (.ics & Google Calendar)
+ *  7. Venue Address Copying
+ *  8. WhatsApp Direct Share
  * ==========================================================
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Authentic Sacred Bel Patra, Marigold & Rose Petals Canvas
+  // 1. Authentic Falling Bel Patra, Marigold & Rose Petals Canvas (NO HEARTS)
   initPetalsCanvas();
 
-  // 2. Cinematic Envelope & Ganesha Reveal Gate
+  // 2. Cinematic 3D Envelope & Ganesha Reveal
   initCinematicGate();
 
-  // 3. Interactive Scratch-to-Reveal Cards (Date, Time, Venue)
+  // 3. Interactive Scratch-to-Reveal 3-Card Engine
   initScratchCards();
 
-  // 4. Shiva-Parvati Divine Actions (Bel Patra Shower & Mandir Ghanta)
+  // 4. Shiva-Parvati Divine Actions (Bel Patra & Mandir Ghanta)
   initDivineActions();
 
-  // 5. Lagna Patrika Fullscreen Viewer
-  initLeavesViewer();
-
-  // 6. Wedding Countdown Timer
+  // 5. Live Wedding Countdown Timer (2 digits for days)
   initCountdownTimer();
 
-  // 7. Calendar Integration (.ics & Google Calendar)
+  // 6. Calendar Integration (Google Calendar & .ics)
   initCalendarActions();
 
-  // 8. Venue Address Copy
+  // 7. Venue Address Copy Actions
   initVenueActions();
 
-  // 9. Share Invitation
+  // 8. Share Invitation
   initShare();
 });
 
@@ -63,19 +58,18 @@ function initPetalsCanvas() {
   });
 
   const particles = [];
-  const TOTAL_PARTICLES = 26; // Elegant density
+  const TOTAL_PARTICLES = 26; // Refined ambient density
 
-  // Particle types: 'belpatra', 'marigold', 'rose_petal', 'jasmine', 'gold_star'
   const PARTICLE_TYPES = ['belpatra', 'marigold', 'rose_petal', 'jasmine', 'gold_star'];
 
-  function createParticle(w, h, randomizeY = false, extraSpeed = 0) {
-    const type = PARTICLE_TYPES[Math.floor(Math.random() * PARTICLE_TYPES.length)];
+  function createParticle(w, h, randomizeY = false, extraSpeed = 0, forceType = null) {
+    const type = forceType || PARTICLE_TYPES[Math.floor(Math.random() * PARTICLE_TYPES.length)];
     let size;
-    if (type === 'belpatra') size = Math.random() * 12 + 15; // Trifoliate 3-leaf
-    else if (type === 'marigold') size = Math.random() * 10 + 13; // Round ruffled flower
-    else if (type === 'rose_petal') size = Math.random() * 8 + 11; // Single organic petal (NO HEART)
-    else if (type === 'jasmine') size = Math.random() * 7 + 10; // White star blossom
-    else size = Math.random() * 5 + 4; // Gold star dust
+    if (type === 'belpatra') size = Math.random() * 12 + 15;
+    else if (type === 'marigold') size = Math.random() * 10 + 13;
+    else if (type === 'rose_petal') size = Math.random() * 8 + 12;
+    else if (type === 'jasmine') size = Math.random() * 7 + 10;
+    else size = Math.random() * 5 + 4;
 
     return {
       type: type,
@@ -96,7 +90,7 @@ function initPetalsCanvas() {
     particles.push(createParticle(width, height, true, 0));
   }
 
-  // 1. TRIFOLIATE BEL PATRA (Sacred 3-lobed Bilva leaf of Lord Shiva)
+  // TRIFOLIATE BEL PATRA (Sacred 3-lobed Bilva leaf of Lord Shiva)
   function drawBelPatra(c, size, alpha) {
     c.save();
     c.globalAlpha = alpha;
@@ -116,6 +110,7 @@ function initPetalsCanvas() {
       c.fillStyle = grad;
       c.fill();
 
+      // Vein
       c.beginPath();
       c.moveTo(0, 0);
       c.lineTo(0, -h * 0.88);
@@ -139,7 +134,7 @@ function initPetalsCanvas() {
     c.restore();
   }
 
-  // 2. GENDA PHOOL (Fresh Marigold Flower - Layered Saffron & Yellow)
+  // GENDA PHOOL (Fresh Marigold Flower)
   function drawMarigold(c, size, alpha) {
     c.save();
     c.globalAlpha = alpha;
@@ -174,7 +169,7 @@ function initPetalsCanvas() {
     c.restore();
   }
 
-  // 3. GULAB PANKHURI (Natural Curved Rose Petal - Organic, Asymmetric, NO HEART)
+  // GULAB PANKHURI (Natural Curved Rose Petal - Strictly No Hearts)
   function drawRosePetal(c, size, alpha) {
     c.save();
     c.globalAlpha = alpha;
@@ -193,7 +188,7 @@ function initPetalsCanvas() {
     c.restore();
   }
 
-  // 4. JASMINE / MOGRA (Ivory 5-Petal Star Flower)
+  // JASMINE / MOGRA (Ivory 5-Petal Star)
   function drawJasmine(c, size, alpha) {
     c.save();
     c.globalAlpha = alpha;
@@ -217,7 +212,7 @@ function initPetalsCanvas() {
     c.restore();
   }
 
-  // 5. GOLD SHIMMER STAR (Auspicious 4-pointed diamond star)
+  // GOLD SHIMMER STAR (Auspicious 4-pointed diamond star)
   function drawGoldStar(c, size, alpha) {
     c.save();
     c.globalAlpha = alpha;
@@ -229,7 +224,7 @@ function initPetalsCanvas() {
     c.quadraticCurveTo(0, 0, 0, -size);
     c.fillStyle = '#ffd54f';
     c.shadowBlur = 8;
-    c.shadowColor = '#c8a267';
+    c.shadowColor = '#d4af37';
     c.fill();
     c.restore();
   }
@@ -239,17 +234,11 @@ function initPetalsCanvas() {
     ctx.translate(p.x, p.y);
     ctx.rotate((p.rotation * Math.PI) / 180);
 
-    if (p.type === 'belpatra') {
-      drawBelPatra(ctx, p.size, p.alpha);
-    } else if (p.type === 'marigold') {
-      drawMarigold(ctx, p.size, p.alpha);
-    } else if (p.type === 'rose_petal') {
-      drawRosePetal(ctx, p.size, p.alpha);
-    } else if (p.type === 'jasmine') {
-      drawJasmine(ctx, p.size, p.alpha);
-    } else {
-      drawGoldStar(ctx, p.size, p.alpha);
-    }
+    if (p.type === 'belpatra') drawBelPatra(ctx, p.size, p.alpha);
+    else if (p.type === 'marigold') drawMarigold(ctx, p.size, p.alpha);
+    else if (p.type === 'rose_petal') drawRosePetal(ctx, p.size, p.alpha);
+    else if (p.type === 'jasmine') drawJasmine(ctx, p.size, p.alpha);
+    else drawGoldStar(ctx, p.size, p.alpha);
 
     ctx.restore();
   }
@@ -277,7 +266,7 @@ function initPetalsCanvas() {
 
   animate();
 
-  // Grand Celebratory Flower & Bel Patra Shower Burst (75+ particles)
+  // Grand Flower & Bel Patra Shower Burst
   window.triggerFlowerShower = function() {
     for (let i = 0; i < 75; i++) {
       const p = createParticle(width, height, false, Math.random() * 2.5 + 1.2);
@@ -293,149 +282,158 @@ function initPetalsCanvas() {
       }
     }, 9000);
   };
+
+  // Rose Petal & Gold Sparkle Burst for Ganesha Reveal
+  window.triggerRosePetalBurst = function() {
+    for (let i = 0; i < 50; i++) {
+      const p = createParticle(width, height, false, Math.random() * 2.8 + 1.4, (i % 2 === 0 ? 'rose_petal' : 'gold_star'));
+      p.y = Math.random() * (height * 0.4);
+      p.speedX = Math.random() * 6 - 3;
+      particles.push(p);
+    }
+  };
 }
 
 /* ==========================================================
-   2. CINEMATIC 3D ENVELOPE & GANESHA REVEAL GATE
+   2. CINEMATIC 3D ENVELOPE, SHOCKWAVE SEAL BREAK & 3D GANESHA REVEAL
    ========================================================== */
 function initCinematicGate() {
+  const sealBtn = document.getElementById('wax-seal-btn');
+  const envelopeStage = document.getElementById('envelope-stage');
+  const lightBeam = document.getElementById('envelope-light-beam');
+  const ganeshaStage = document.getElementById('ganesha-stage');
+  const continueBtn = document.getElementById('continue-to-invite-btn');
   const gate = document.getElementById('cinematic-gate');
-  const waxSeal = document.getElementById('wax-seal');
-  const flap = document.getElementById('envelope-flap');
-  const envelopeWrap = document.getElementById('envelope-3d-wrap');
-  const envelopeCard = document.getElementById('envelope-card');
-  const ganeshaAperture = document.getElementById('ganesha-aperture');
-  const sparkleCanvas = document.getElementById('sparkle-canvas');
 
-  // Ambient gold sparkles on gate
-  let sCtx = null;
-  let sparkles = [];
-  if (sparkleCanvas) {
-    sCtx = sparkleCanvas.getContext('2d');
-    sparkleCanvas.width = window.innerWidth;
-    sparkleCanvas.height = window.innerHeight;
+  // Ambient Starlight Canvas
+  initAmbientSparkles();
 
-    for (let i = 0; i < 40; i++) {
-      sparkles.push({
-        x: Math.random() * sparkleCanvas.width,
-        y: Math.random() * sparkleCanvas.height,
-        r: Math.random() * 2 + 1,
-        speedY: -(Math.random() * 0.8 + 0.3),
-        alpha: Math.random() * 0.6 + 0.2
-      });
-    }
+  let isOpening = false;
 
-    function renderSparkles() {
-      if (!gate || gate.style.display === 'none') return;
-      sCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
-      sCtx.fillStyle = '#fbe285';
+  function openEnvelopeSequence() {
+    if (isOpening) return;
+    isOpening = true;
 
-      sparkles.forEach(s => {
-        s.y += s.speedY;
-        if (s.y < 0) s.y = sparkleCanvas.height;
-        sCtx.globalAlpha = s.alpha;
-        sCtx.beginPath();
-        sCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        sCtx.fill();
-      });
-      requestAnimationFrame(renderSparkles);
-    }
-    renderSparkles();
-  }
-
-  let hasOpened = false;
-
-  function triggerOpenSequence() {
-    if (hasOpened) return;
-    hasOpened = true;
-
-    // 1. Play Default Soundtrack (Ullam Paadum from 00:15)
+    // 1. Play default music (Ullam Paadum - 2 States trimmed at 15s) immediately on user interaction
     if (window.weddingAudio) {
       window.weddingAudio.play();
     }
 
-    // 2. Step 1: Wax Seal Breaks with Shockwave & Temple Bell
-    waxSeal.classList.add('breaking');
+    // 2. Play acoustic temple bell chime
     if (window.weddingAudio && window.weddingAudio.playIndianTempleGhanta) {
       window.weddingAudio.playIndianTempleGhanta();
     }
 
-    // 3. Step 2: 3D Flap Opens
+    // 3. Stage 1: Break royal wax seal with expanding shockwave ripple & light beam
+    if (sealBtn) {
+      sealBtn.classList.add('breaking');
+    }
+    if (lightBeam) {
+      lightBeam.classList.add('active');
+    }
+
+    // 4. Trigger golden sparkle & flower cascade
+    if (window.triggerFlowerShower) {
+      window.triggerFlowerShower();
+    }
+
+    // 5. Stage 2: After 1100ms, reveal 3D Lord Ganesha Scene with halo rings & rose petal shower
     setTimeout(() => {
-      flap.classList.add('open');
-      envelopeCard.classList.add('opened');
-      if (window.triggerFlowerShower) {
-        window.triggerFlowerShower();
+      if (envelopeStage) {
+        envelopeStage.style.opacity = '0';
+        envelopeStage.style.transform = 'scale(1.12)';
+        envelopeStage.style.pointerEvents = 'none';
       }
-    }, 450);
+      if (ganeshaStage) {
+        ganeshaStage.classList.add('active');
+      }
+      if (window.triggerRosePetalBurst) {
+        window.triggerRosePetalBurst();
+      }
+    }, 1100);
 
-    // 4. Step 3: Ganesha Aperture Expands & Shloka Fades In
+    // 6. Auto-advance to main invitation after 6.5s if guest doesn't click continue
     setTimeout(() => {
-      envelopeWrap.classList.add('fading');
-      ganeshaAperture.classList.add('active');
-    }, 1600);
+      enterMainInvitation();
+    }, 7000);
+  }
 
-    // 5. Step 4: Gate Smoothly Fades out, Revealing Main Royal Invitation
-    setTimeout(() => {
-      document.body.classList.remove('envelope-active');
+  function enterMainInvitation() {
+    document.body.classList.remove('envelope-active');
+    if (gate) {
       gate.style.opacity = '0';
-      gate.style.transition = 'opacity 1.4s ease';
-
+      gate.style.transform = 'scale(1.05)';
       setTimeout(() => {
         gate.style.display = 'none';
-      }, 1400);
-    }, 5600);
+      }, 1100);
+    }
   }
 
-  if (waxSeal) {
-    waxSeal.addEventListener('click', triggerOpenSequence);
-  }
+  if (sealBtn) sealBtn.addEventListener('click', openEnvelopeSequence);
+  if (envelopeStage) envelopeStage.addEventListener('click', openEnvelopeSequence);
+  if (continueBtn) continueBtn.addEventListener('click', enterMainInvitation);
+}
 
-  // Allow clicking anywhere on envelope to open
-  if (envelopeCard) {
-    envelopeCard.addEventListener('click', (e) => {
-      triggerOpenSequence();
+function initAmbientSparkles() {
+  const canvas = document.getElementById('ambient-sparkles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const stars = [];
+  for (let i = 0; i < 40; i++) {
+    stars.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.2 + 1,
+      alpha: Math.random(),
+      speed: Math.random() * 0.02 + 0.008
     });
   }
 
-  // Allow tapping on Ganesha screen to immediately enter
-  if (ganeshaAperture) {
-    ganeshaAperture.addEventListener('click', () => {
-      document.body.classList.remove('envelope-active');
-      gate.style.opacity = '0';
-      setTimeout(() => { gate.style.display = 'none'; }, 800);
+  function renderStars() {
+    ctx.clearRect(0, 0, width, height);
+    stars.forEach(s => {
+      s.alpha += s.speed;
+      const opacity = (Math.sin(s.alpha) + 1) / 2;
+      ctx.fillStyle = `rgba(255, 230, 160, ${opacity * 0.6})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+      ctx.fill();
     });
+    requestAnimationFrame(renderStars);
   }
+
+  renderStars();
 }
 
 /* ==========================================================
-   3. "SCRATCH TO REVEAL" THREE-CARD GRID (CANVAS ENGINE)
+   3. INTERACTIVE "SCRATCH TO REVEAL" THREE-CARD ENGINE
    ========================================================== */
 function initScratchCards() {
   const cards = [
-    { canvasId: 'canvas-scratch-date', boxId: 'scratch-box-date' },
-    { canvasId: 'canvas-scratch-time', boxId: 'scratch-box-time' },
-    { canvasId: 'canvas-scratch-venue', boxId: 'scratch-box-venue' }
+    { canvasId: 'canvas-date', label: 'DATE ✦ 31 JAN' },
+    { canvasId: 'canvas-time', label: 'TIME ✦ 6:00 PM' },
+    { canvasId: 'canvas-venue', label: 'VENUE ✦ DHANBAD' }
   ];
 
-  cards.forEach(({ canvasId, boxId }) => {
-    const canvas = document.getElementById(canvasId);
-    const box = document.getElementById(boxId);
-    if (!canvas || !box) return;
+  cards.forEach(cfg => {
+    const canvas = document.getElementById(cfg.canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-    const ctx = canvas.getContext('2d');
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width || 280;
-    canvas.height = rect.height || 230;
+    function renderGoldFoil() {
+      const w = canvas.width;
+      const h = canvas.height;
 
-    let isScratching = false;
-    let isRevealed = false;
-
-    // Draw Royal Gold Metallic Foil with Shimmer & Emblem Text
-    function drawGoldFoil() {
-      ctx.globalCompositeOperation = 'source-over';
-      
-      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      const grad = ctx.createLinearGradient(0, 0, w, h);
       grad.addColorStop(0, '#bf953f');
       grad.addColorStop(0.25, '#fcf6ba');
       grad.addColorStop(0.5, '#b38728');
@@ -443,150 +441,136 @@ function initScratchCards() {
       grad.addColorStop(1, '#aa771c');
 
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, w, h);
 
-      // Gold dust speckles
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-      for (let i = 0; i < 30; i++) {
-        const sx = Math.random() * canvas.width;
-        const sy = Math.random() * canvas.height;
-        ctx.beginPath();
-        ctx.arc(sx, sy, Math.random() * 2 + 1, 0, Math.PI * 2);
-        ctx.fill();
-      }
+      // Gold border
+      ctx.strokeStyle = '#6b4a1e';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(6, 6, w - 12, h - 12);
 
-      // Border and text inside gold foil
-      ctx.strokeStyle = 'rgba(110, 11, 23, 0.35)';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
-
-      ctx.font = '700 13px Cinzel, serif';
-      ctx.fillStyle = '#3a050b';
+      // Prompt Text
+      ctx.fillStyle = '#4a2800';
+      ctx.font = 'bold 13px Cinzel, serif';
       ctx.textAlign = 'center';
-      ctx.fillText('👑 SCRATCH TO REVEAL 👑', canvas.width / 2, canvas.height / 2 - 8);
+      ctx.textBaseline = 'middle';
+      ctx.fillText('SCRATCH TO REVEAL', w / 2, h / 2 - 8);
 
-      ctx.font = '500 11px Montserrat, sans-serif';
-      ctx.fillStyle = '#5a121c';
-      ctx.fillText('Rub with finger or mouse', canvas.width / 2, canvas.height / 2 + 14);
+      ctx.fillStyle = '#6e0b17';
+      ctx.font = 'bold 11px Montserrat, sans-serif';
+      ctx.fillText(cfg.label, w / 2, h / 2 + 14);
+
+      ctx.font = '16px serif';
+      ctx.fillText('✨', w / 2, h / 2 - 32);
     }
 
-    drawGoldFoil();
+    renderGoldFoil();
 
-    function scratch(x, y) {
-      if (isRevealed) return;
+    let isScratching = false;
+    let revealed = false;
+
+    function scratchAt(clientX, clientY) {
+      if (revealed) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      const x = (clientX - rect.left) * scaleX;
+      const y = (clientY - rect.top) * scaleY;
 
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath();
-      ctx.arc(x, y, 24, 0, Math.PI * 2);
+      ctx.arc(x, y, 26, 0, Math.PI * 2);
       ctx.fill();
 
-      // Check percentage scratched every few touches
-      checkProgress();
+      checkCompletion();
     }
 
-    function getCoords(e) {
-      const b = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      return {
-        x: (clientX - b.left) * (canvas.width / b.width),
-        y: (clientY - b.top) * (canvas.height / b.height)
-      };
-    }
-
-    // Check progress
-    let checkThrottle = 0;
-    function checkProgress() {
-      checkThrottle++;
-      if (checkThrottle % 5 !== 0) return;
+    function checkCompletion() {
+      if (revealed) return;
 
       try {
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const pixels = imgData.data;
-        let transparentPixels = 0;
-        const step = 32; // Fast sampling
+        let transparent = 0;
+        const total = pixels.length / 4;
 
-        for (let i = 3; i < pixels.length; i += 4 * step) {
-          if (pixels[i] < 128) {
-            transparentPixels++;
+        for (let i = 3; i < pixels.length; i += 64) {
+          if (pixels[i] === 0) transparent++;
+        }
+
+        const sampleTotal = total / 16;
+        const scratchedPercent = (transparent / sampleTotal) * 100;
+
+        if (scratchedPercent > 35) {
+          revealed = true;
+          canvas.style.opacity = '0';
+          canvas.style.pointerEvents = 'none';
+          if (window.triggerFlowerShower) {
+            window.triggerFlowerShower();
           }
         }
-
-        const totalSampled = pixels.length / (4 * step);
-        const percentCleared = transparentPixels / totalSampled;
-
-        if (percentCleared > 0.38) {
-          revealCard();
-        }
-      } catch (err) {}
+      } catch (e) {}
     }
 
-    function revealCard() {
-      if (isRevealed) return;
-      isRevealed = true;
-      box.classList.add('is-revealed');
-      canvas.style.transition = 'opacity 0.6s ease';
-      canvas.style.opacity = '0';
-      setTimeout(() => {
-        canvas.style.display = 'none';
-      }, 600);
-    }
-
-    // Mouse events
+    // Mouse Listeners
     canvas.addEventListener('mousedown', (e) => {
       isScratching = true;
-      const { x, y } = getCoords(e);
-      scratch(x, y);
+      scratchAt(e.clientX, e.clientY);
     });
 
     window.addEventListener('mousemove', (e) => {
-      if (!isScratching) return;
-      const { x, y } = getCoords(e);
-      scratch(x, y);
+      if (isScratching) scratchAt(e.clientX, e.clientY);
     });
 
-    window.addEventListener('mouseup', () => { isScratching = false; });
+    window.addEventListener('mouseup', () => {
+      isScratching = false;
+    });
 
-    // Touch events for mobile
+    // Touch Listeners
     canvas.addEventListener('touchstart', (e) => {
       isScratching = true;
-      const { x, y } = getCoords(e);
-      scratch(x, y);
+      const touch = e.touches[0];
+      scratchAt(touch.clientX, touch.clientY);
       e.preventDefault();
     }, { passive: false });
 
     canvas.addEventListener('touchmove', (e) => {
-      if (!isScratching) return;
-      const { x, y } = getCoords(e);
-      scratch(x, y);
+      if (isScratching) {
+        const touch = e.touches[0];
+        scratchAt(touch.clientX, touch.clientY);
+      }
       e.preventDefault();
     }, { passive: false });
 
-    canvas.addEventListener('touchend', () => { isScratching = false; });
-
-    // Register auto-reveal hook
-    canvas.revealCardDirect = revealCard;
+    canvas.addEventListener('touchend', () => {
+      isScratching = false;
+    });
   });
 
-  // Reveal All Details Button
-  const revealAllBtn = document.getElementById('btn-reveal-all');
-  if (revealAllBtn) {
-    revealAllBtn.addEventListener('click', () => {
-      cards.forEach(({ canvasId }) => {
-        const c = document.getElementById(canvasId);
-        if (c && c.revealCardDirect) {
-          c.revealCardDirect();
+  // "Uncover All Details" Button
+  const uncoverAllBtn = document.getElementById('uncover-all-btn');
+  if (uncoverAllBtn) {
+    uncoverAllBtn.addEventListener('click', () => {
+      cards.forEach(cfg => {
+        const canvas = document.getElementById(cfg.canvasId);
+        if (canvas) {
+          canvas.style.opacity = '0';
+          canvas.style.pointerEvents = 'none';
         }
       });
       if (window.triggerFlowerShower) {
         window.triggerFlowerShower();
       }
+      uncoverAllBtn.innerHTML = '✨ All Details Uncovered! ✨';
+      setTimeout(() => {
+        uncoverAllBtn.style.display = 'none';
+      }, 1600);
     });
   }
 }
 
 /* ==========================================================
-   4. SHIVA-PARVATI DIVINE ACTIONS (BEL PATRA SHOWER & MANDIR GHANTA)
+   4. SHIVA-PARVATI DIVINE ACTIONS (BEL PATRA & MANDIR GHANTA)
    ========================================================== */
 function initDivineActions() {
   const flowerBtn = document.getElementById('flower-shower-btn');
@@ -636,48 +620,9 @@ function initDivineActions() {
 }
 
 /* ==========================================================
-   5. LAGNA PATRIKA FULLSCREEN VIEWER
-   ========================================================== */
-function initLeavesViewer() {
-  const viewBtns = document.querySelectorAll('.view-leaf-btn');
-  const lightbox = document.getElementById('photo-lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCap = document.getElementById('lightbox-caption');
-  const closeBtn = document.getElementById('close-lightbox');
-
-  viewBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const src = btn.getAttribute('data-src');
-      const title = btn.getAttribute('data-title');
-      if (lightboxImg) lightboxImg.src = src;
-      if (lightboxCap) lightboxCap.innerHTML = `<strong>${title}</strong>`;
-      if (lightbox) lightbox.classList.add('open');
-    });
-  });
-
-  if (closeBtn && lightbox) {
-    closeBtn.addEventListener('click', () => lightbox.classList.remove('open'));
-  }
-
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('open');
-    });
-  }
-
-  window.addEventListener('keydown', (e) => {
-    if (lightbox && lightbox.classList.contains('open') && e.key === 'Escape') {
-      lightbox.classList.remove('open');
-    }
-  });
-}
-
-/* ==========================================================
-   6. WEDDING COUNTDOWN TIMER (2 DIGITS FOR DAYS)
+   5. LIVE WEDDING COUNTDOWN TIMER (2 DIGITS FOR DAYS)
    ========================================================== */
 function initCountdownTimer() {
-  // Wedding Date: 31st January 2027, 18:00:00 IST
   const targetDate = new Date('2027-01-31T18:00:00+05:30').getTime();
 
   const daysEl = document.getElementById('days-count');
@@ -713,7 +658,7 @@ function initCountdownTimer() {
 }
 
 /* ==========================================================
-   7. CALENDAR INTEGRATION (.ICS & GOOGLE CALENDAR)
+   6. CALENDAR INTEGRATION (.ICS & GOOGLE CALENDAR)
    ========================================================== */
 function initCalendarActions() {
   const gcalBtn = document.getElementById('add-to-calendar-btn');
@@ -721,9 +666,9 @@ function initCalendarActions() {
 
   const eventData = {
     title: 'Wedding of Prasoon & Navya',
-    description: 'With the divine blessings of Baba Baidyanath & Mata Parvati, you are cordially invited to celebrate the Wedding of Prasoon & Navya in Deoghar and Dhanbad, Jharkhand, followed by Reception in Ranchi.',
-    location: 'The Wedding Bells, Baramuri, Bhuli Hirak Road, Near Asarfi Hospital, Jharudih, Dhanbad, Jharkhand – 826013',
-    start: '20270131T123000Z', // 18:00 IST in UTC
+    description: 'You are cordially invited to celebrate the Wedding of Prasoon & Navya across Deoghar, Dhanbad & Ranchi (Reception). With the divine blessings of Baba Baidyanath & Mata Parvati.',
+    location: 'The Wedding Bells, Baramuri, Bhuli Hirak Road, Dhanbad – 826013 & Dulhan Banquet Hall, Ranchi',
+    start: '20270131T123000Z',
     end: '20270131T200000Z'
   };
 
@@ -739,7 +684,7 @@ function initCalendarActions() {
       const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Prasoon & Navya//Wedding Celebration//EN',
+        'PRODID:-//Prasoon & Navya//Royal Wedding//EN',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
@@ -766,7 +711,7 @@ function initCalendarActions() {
 }
 
 /* ==========================================================
-   8. VENUE ADDRESS COPY
+   7. VENUE ADDRESS COPY ACTIONS
    ========================================================== */
 function initVenueActions() {
   const copyBtns = document.querySelectorAll('.copy-btn');
@@ -778,7 +723,7 @@ function initVenueActions() {
 
       navigator.clipboard.writeText(address).then(() => {
         const origText = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Address Copied!';
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
         btn.style.borderColor = '#10b981';
         setTimeout(() => {
           btn.innerHTML = origText;
@@ -792,7 +737,7 @@ function initVenueActions() {
 }
 
 /* ==========================================================
-   9. SHARE INVITATION (WHATSAPP / WEB SHARE)
+   8. SHARE INVITATION VIA WHATSAPP & WEB SHARE API
    ========================================================== */
 function initShare() {
   const shareBtn = document.getElementById('share-card-btn');
@@ -801,7 +746,7 @@ function initShare() {
   shareBtn.addEventListener('click', () => {
     const shareData = {
       title: 'Prasoon & Navya — Royal Wedding Celebrations 2027',
-      text: 'With the divine blessings of Baba Baidyanath & Mata Parvati, you are cordially invited to celebrate the wedding of Prasoon & Navya (27–31 Jan 2027, Deoghar & Dhanbad, and Reception 6 Feb 2027, Ranchi).',
+      text: 'With the divine blessings of Baba Baidyanath & Mata Parvati, you are cordially invited to celebrate the royal wedding of Prasoon & Navya (27–31 Jan 2027, Deoghar & Dhanbad • Grand Reception 6 Feb 2027, Ranchi).',
       url: window.location.href
     };
 
@@ -810,7 +755,7 @@ function initShare() {
     } else {
       navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`).then(() => {
         const origText = shareBtn.innerHTML;
-        shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> Invitation Link Copied!';
+        shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copied!';
         setTimeout(() => {
           shareBtn.innerHTML = origText;
         }, 2500);

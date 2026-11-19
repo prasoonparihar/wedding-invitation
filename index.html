@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Prasoon &amp; Navya — Royal Wedding Celebrations 2027</title>
-  <meta name="description" content="With the divine blessings of Baba Baidyanath &amp; Mata Parvati, you are cordially invited to celebrate the wedding of Prasoon &amp; Navya. 27–31 January 2027 (Deoghar &amp; Dhanbad) &amp; Reception 6 February 2027 (Ranchi).">
+  <meta name="description" content="With the divine blessings of Baba Baidyanath &amp; Mata Parvati, you are cordially invited to celebrate the royal wedding of Prasoon &amp; Navya. 27–31 January 2027 &amp; Grand Reception 6 February 2027.">
 
-  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <!-- Open Graph / WhatsApp Preview Meta Tags (Absolute HTTPS URLs) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://prasoonparihar.github.io/wedding-invitation/">
   <meta property="og:title" content="Prasoon &amp; Navya — Royal Wedding Celebrations 2027">
-  <meta property="og:description" content="With the divine blessings of Baba Baidyanath &amp; Mata Parvati, we cordially invite you to celebrate our wedding. 27–31 January 2027 (Deoghar &amp; Dhanbad) &amp; Reception 6 February 2027 (Ranchi).">
-  <meta property="og:image" content="https://prasoonparihar.github.io/wedding-invitation/images/couple_royal_portrait.jpg">
-  <meta property="og:image:secure_url" content="https://prasoonparihar.github.io/wedding-invitation/images/couple_royal_portrait.jpg">
-  <meta property="og:image:width" content="682">
+  <meta property="og:description" content="With the divine blessings of Baba Baidyanath &amp; Mata Parvati, we cordially invite you to celebrate our wedding. 27–31 January 2027 (Deoghar &amp; Dhanbad) &amp; Grand Reception 6 February 2027 (Ranchi).">
+  <meta property="og:image" content="https://prasoonparihar.github.io/wedding-invitation/images/envelope_3d.jpg">
+  <meta property="og:image:secure_url" content="https://prasoonparihar.github.io/wedding-invitation/images/envelope_3d.jpg">
+  <meta property="og:image:width" content="584">
   <meta property="og:image:height" content="1024">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:site_name" content="Prasoon &amp; Navya Wedding">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Prasoon &amp; Navya — Royal Wedding Celebrations 2027">
-  <meta name="twitter:description" content="With the divine blessings of Baba Baidyanath &amp; Mata Parvati, we cordially invite you to celebrate our wedding. 27–31 January 2027 (Deoghar &amp; Dhanbad) &amp; Reception 6 February 2027 (Ranchi).">
-  <meta name="twitter:image" content="https://prasoonparihar.github.io/wedding-invitation/images/couple_royal_portrait.jpg">
+  <meta name="twitter:description" content="With the divine blessings of Baba Baidyanath &amp; Mata Parvati, we cordially invite you to celebrate our wedding. 27–31 January 2027 (Deoghar &amp; Dhanbad) &amp; Grand Reception 6 February 2027 (Ranchi).">
+  <meta name="twitter:image" content="https://prasoonparihar.github.io/wedding-invitation/images/envelope_3d.jpg">
   <meta name="theme-color" content="#700b1a">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
 
-  <!-- Google Fonts: Luxury Serif, Cinzel, Cormorant Garamond, & Script -->
+  <!-- Google Fonts: Editorial Luxury Serif & Vedic Calligraphy -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -34,335 +34,407 @@
 </head>
 <body class="envelope-active">
 
-  <!-- Ambient Sacred Bel Patra & Flower Shower Canvas (NO HEARTS) -->
+  <!-- Divine Falling Flower Petals Canvas (Bel Patra, Marigold, Rose Petals, Jasmine, Gold Stars - NO HEARTS) -->
   <canvas id="petals-canvas" aria-hidden="true"></canvas>
 
-  <!-- Hidden Audio Engine Elements -->
-  <aside class="audio-control-bar" id="audio-control-bar" aria-label="Wedding Music Player">
+  <!-- Hidden Music Controls & Modal (Controlled automatically by seal open) -->
+  <aside class="audio-control-bar" id="audio-control-bar" aria-label="Music Player">
     <div class="audio-disc" id="audio-disc"><i class="fa-solid fa-compact-disc"></i></div>
-    <div class="audio-info">
-      <span class="track-title" id="track-title">Ullam Paadum — 2 States</span>
-      <div class="equalizer" id="equalizer"><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
+    <div class="audio-info"><span class="track-title" id="track-title">Ullam Paadum — 2 States</span></div>
     <div class="audio-buttons">
       <button id="play-pause-btn" class="ctrl-btn"><i class="fa-solid fa-play" id="play-icon"></i></button>
     </div>
   </aside>
+  <div class="modal-backdrop" id="music-modal"></div>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       STAGE 1–4: 3D EMBOSSED ENVELOPE & GANESHA REVEAL GATE
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="cinematic-gate" id="cinematic-gate" aria-label="Wedding Invitation Envelope">
-    <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
-
-    <!-- 3D Perspective Envelope -->
-    <div class="envelope-3d-wrap" id="envelope-3d-wrap">
-      <div class="envelope-card-perspective" id="envelope-card">
-        
-        <!-- Top Triangular Flap -->
-        <div class="envelope-flap" id="envelope-flap">
-          <div class="flap-botanical-border">
-            <svg viewBox="0 0 340 120" preserveAspectRatio="none" class="botanical-svg">
-              <path d="M0,0 Q85,45 170,120 Q255,45 340,0 Z" fill="none" stroke="rgba(200, 162, 103, 0.45)" stroke-width="1.5"/>
-              <path d="M20,0 Q90,35 170,105 Q250,35 320,0" fill="none" stroke="rgba(200, 162, 103, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
-            </svg>
-          </div>
-          <div class="flap-inner-shadow"></div>
-        </div>
-
-        <!-- Envelope Body & Inner Pocket -->
-        <div class="envelope-base">
-          <!-- Botanical Border Relieves -->
-          <div class="embossed-border-top"></div>
-          <div class="embossed-border-bottom"></div>
-
-          <!-- Letter Card Inside Peek -->
-          <div class="envelope-letter-sheet" id="envelope-letter-sheet">
-            <div class="sheet-ornament">🪷</div>
-            <p class="sheet-shloka">॥ श्री गणेशाय नमः ॥</p>
-            <h1 class="sheet-couple">Prasoon <span class="amp">&amp;</span> Navya</h1>
-            <div class="sheet-divider"><span>❦ ❖ ❦</span></div>
-            <p class="sheet-sub">Wedding Invitation</p>
-            <p class="sheet-dates">27th – 31st January 2027</p>
-            <p class="sheet-places">Deoghar &bull; Dhanbad &bull; Ranchi</p>
-          </div>
-
-          <!-- Bottom Pocket Fold Silhouette -->
-          <div class="envelope-pocket">
-            <div class="pocket-fold-left"></div>
-            <div class="pocket-fold-right"></div>
-            <div class="pocket-fold-bottom"></div>
-          </div>
-        </div>
-
-        <!-- Royal Golden Wax Seal with Expanding Shockwave Rings -->
-        <div class="wax-seal" id="wax-seal" role="button" tabindex="0" title="Tap to Break Royal Wax Seal & Enter">
-          <div class="seal-glow-core"></div>
-          <div class="seal-emblem">
-            <span class="om-seal">🕉</span>
-          </div>
-          <div class="seal-pulse-ring ring-1"></div>
-          <div class="seal-pulse-ring ring-2"></div>
-          <div class="seal-pulse-ring ring-3"></div>
-        </div>
-
-        <p class="seal-tap-hint" id="seal-tap-hint">
-          <i class="fa-solid fa-hand-pointer"></i> Tap the Royal Wax Seal to open invitation
-        </p>
-      </div>
-    </div>
-
-    <!-- 3D Lord Ganesha Reveal & Halo Rings Aperture (Activates on Seal Tap) -->
-    <div class="ganesha-aperture" id="ganesha-aperture" aria-hidden="true">
-      <div class="ganesha-portal">
-        <div class="halo-ring halo-1"></div>
-        <div class="halo-ring halo-2"></div>
-        <div class="halo-ring halo-3"></div>
-        <div class="light-ray-burst"></div>
-
-        <div class="ganesha-figure-wrap">
-          <div class="divine-aura-glow"></div>
-          <!-- Auspicious Ganesha Emblem -->
-          <div class="ganesha-motif">
-            <svg class="ganesha-art-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="goldGradGanesha" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#fff4cc"/>
-                  <stop offset="35%" stop-color="#e8be66"/>
-                  <stop offset="70%" stop-color="#c8a267"/>
-                  <stop offset="100%" stop-color="#8a6327"/>
-                </linearGradient>
-                <filter id="ganeshaGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="3" result="blur"/>
-                  <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                </filter>
-              </defs>
-              <!-- Lotus Base -->
-              <path d="M60 160 C75 145 125 145 140 160 C130 172 70 172 60 160 Z" fill="url(#goldGradGanesha)"/>
-              <path d="M40 163 C55 152 75 156 85 168 C65 174 48 171 40 163 Z" fill="url(#goldGradGanesha)" opacity="0.85"/>
-              <path d="M160 163 C145 152 125 156 115 168 C135 174 152 171 160 163 Z" fill="url(#goldGradGanesha)" opacity="0.85"/>
-              <!-- Ganesha Body & Trunk Contour -->
-              <path d="M100 45 C80 45 68 60 68 85 C68 115 82 135 100 148 C118 135 132 115 132 85 C132 60 120 45 100 45 Z" stroke="url(#goldGradGanesha)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-              <!-- Sacred Trunk Curve -->
-              <path d="M96 75 C96 105 82 125 78 132 C74 139 77 146 84 144 C90 142 94 135 98 126" stroke="url(#goldGradGanesha)" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <!-- Left Tusk & Ear -->
-              <path d="M68 70 C50 68 38 82 42 100 C45 112 58 116 68 114" stroke="url(#goldGradGanesha)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-              <!-- Right Ear & Modak Hand -->
-              <path d="M132 70 C150 68 162 82 158 100 C155 112 142 116 132 114" stroke="url(#goldGradGanesha)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-              <!-- Crown Mukut -->
-              <path d="M85 45 L100 20 L115 45 Z" fill="url(#goldGradGanesha)" filter="url(#ganeshaGlow)"/>
-              <circle cx="100" cy="18" r="3" fill="#fffdfa"/>
-              <!-- Tilak & Trishul Mark on Forehead -->
-              <path d="M100 52 V68" stroke="#ff4d4d" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="100" cy="72" r="2.5" fill="#e6a817"/>
-              <path d="M92 56 Q100 62 108 56" stroke="url(#goldGradGanesha)" stroke-width="2.5" fill="none"/>
-            </svg>
-          </div>
-        </div>
-
-        <div class="ganesha-shloka-box">
-          <p class="ganesha-sanskrit">॥ श्री गणेशाय नमः ॥</p>
-          <p class="ganesha-verse">"वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥"</p>
-          <p class="ganesha-meaning">"O Lord of curved trunk and majestic presence, radiant as ten million suns — bestow thy eternal blessings and grace upon this sacred union."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       STAGE 5: ORNATE ARCH INVITATION CARD (ROYAL JHAROKHA)
-       ═══════════════════════════════════════════════════════════ -->
-  <main class="invitation-container" id="main-content">
+  <!-- ═══════════════════════════════════════
+       CINEMATIC GATE: STAGE 1 (3D ENVELOPE) & STAGE 2 (3D GANESHA REVEAL)
+       ═══════════════════════════════════════ -->
+  <div class="cinematic-portal-gate" id="cinematic-gate">
     
-    <section class="arch-invitation-section" id="arch-invitation">
-      <div class="arch-frame">
-        <!-- Hanging Brass Temple Lanterns -->
-        <div class="hanging-lantern lantern-left">
-          <div class="lantern-chain"></div>
-          <div class="lantern-lamp"><div class="lamp-flicker"></div></div>
-        </div>
-        <div class="hanging-lantern lantern-right">
-          <div class="lantern-chain"></div>
-          <div class="lantern-lamp"><div class="lamp-flicker"></div></div>
+    <!-- Ambient Gold Starlight Canvas -->
+    <canvas id="ambient-sparkles-canvas" class="ambient-sparkles-canvas"></canvas>
+
+    <!-- ═══ SCENE 1: 3D EMBOSSED CREAM ENVELOPE & GOLD WAX SEAL ═══ -->
+    <div class="envelope-stage-wrapper" id="envelope-stage">
+      <div class="envelope-art-container" id="envelope-art-container">
+        <!-- Exact HD 3D Embossed Floral Relief Envelope Image -->
+        <img src="./images/envelope_3d.jpg" alt="Luxury 3D Embossed Wedding Invitation Envelope" class="envelope-base-img" id="envelope-img">
+
+        <!-- Interactive Gold Wax Seal Hotspot (Centered exactly over the embossed seal) -->
+        <div class="wax-seal-interactive-zone" id="wax-seal-btn" title="Tap Wax Seal to Open Invitation">
+          <!-- Concentric Light Ripple Waves -->
+          <div class="seal-ripple-wave wave-1"></div>
+          <div class="seal-ripple-wave wave-2"></div>
+          <div class="seal-ripple-wave wave-3"></div>
+          <!-- Golden Glints & Sparkles on Seal Rim -->
+          <div class="seal-gold-sparkle sp-1">✨</div>
+          <div class="seal-gold-sparkle sp-2">✨</div>
+          <div class="seal-gold-sparkle sp-3">✨</div>
+          <!-- Circular Light Burst Trigger -->
+          <div class="seal-center-core">
+            <span class="seal-om-icon">🕉</span>
+          </div>
         </div>
 
-        <!-- Arch Top Filigree Ornament -->
-        <div class="arch-crown-crest">
-          <span class="crest-symbol">❦ ❖ ❦</span>
-          <p class="arch-invoc-line">॥ श्री गणेशाय नमः • ॐ नमः शिवाय ॥</p>
+        <!-- Glowing Stream of Light Rising/Cascading on Open -->
+        <div class="envelope-light-beam" id="envelope-light-beam"></div>
+
+        <!-- Tap Prompt -->
+        <div class="envelope-tap-instruction">
+          <p class="tap-main-text"><i class="fa-solid fa-hand-pointer"></i> Tap Royal Wax Seal to Open</p>
+          <span class="tap-sub-text">Experience the 3D cinematic wedding reveal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SCENE 2: 3D LORD GANESHA REVEAL & ROSE PETAL SHOWER ═══ -->
+    <div class="ganesha-stage-wrapper" id="ganesha-stage">
+      
+      <!-- Concentric Glowing Gold Halo Rings -->
+      <div class="ganesha-halo-glow-ring ring-outer"></div>
+      <div class="ganesha-halo-glow-ring ring-mid"></div>
+      <div class="ganesha-halo-glow-ring ring-inner"></div>
+
+      <!-- HD 3D Lord Ganesha Idol on Golden Lotus Pedestal -->
+      <div class="ganesha-idol-frame">
+        <img src="./images/ganesha_3d.jpg" alt="3D Lord Ganesha Idol on Lotus Pedestal" class="ganesha-hd-art" id="ganesha-img">
+        <div class="ganesha-hand-lensflare"></div>
+      </div>
+
+      <!-- Sanskrit Invocation & Shloka Overlay -->
+      <div class="ganesha-mantra-card">
+        <p class="shri-ganeshaya-namah">॥ श्री गणेशाय नमः ॥</p>
+        <p class="vakratunda-shloka">
+          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
+          निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+        </p>
+        <div class="divider-gold-knot">❦ ❖ ❦</div>
+        <p class="shloka-blessing-en">
+          "May Lord Ganesha, brilliant as a billion suns, remove all obstacles and bestow eternal grace upon this sacred union."
+        </p>
+        <button class="action-btn gold-glow continue-to-invite-btn" id="continue-to-invite-btn">
+          Open Wedding Invitation <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       MAIN WEDDING INVITATION (MOBILE-FIRST EDITORIAL ARTWORK)
+       ═══════════════════════════════════════ -->
+  <main class="invitation-main-flow" id="main-content">
+
+    <!-- ═══════════════════════════════════════
+         SCENE 3: ORNATE ARCH INVITATION CARD (MUGHAL ARCH & WARM LANTERNS)
+         ═══════════════════════════════════════ -->
+    <section class="arch-card-wrapper" id="arch-card">
+      <div class="mughal-arch-card">
+        
+        <!-- Hanging Brass Lanterns Swaying with Warm Glow -->
+        <div class="hanging-lamp lamp-left">
+          <div class="lamp-chain"></div>
+          <div class="lamp-lantern">🪔</div>
+        </div>
+        <div class="hanging-lamp lamp-right">
+          <div class="lamp-chain"></div>
+          <div class="lamp-lantern">🪔</div>
         </div>
 
-        <!-- Staggered Sequential Reveals -->
-        <div class="arch-content">
-          <div class="arch-reveal-item" data-order="1">
-            <span class="royal-filigree-pill">SHUBH VIVAH INVITATION</span>
+        <!-- Upper Corner Pampas Grass & White Floral Embellishments -->
+        <div class="arch-flora-corner top-l">🌾</div>
+        <div class="arch-flora-corner top-r">🌾</div>
+
+        <!-- Arch Card Content (Staggered Typography) -->
+        <div class="arch-typography-flow">
+          
+          <div class="arch-ganesha-crest">
+            <span class="crest-ganesha-symbol">🕉</span>
+            <p class="crest-shloka-line">॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ॥</p>
+            <p class="crest-shloka-line">॥ निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
           </div>
 
-          <p class="arch-reveal-item salutation-text" data-order="2">
-            With the divine grace and supreme blessings of<br>
-            <strong>Baba Baidyanath &amp; Mata Parvati</strong>,<br>
-            we cordially solicit your esteemed presence and blessings at the wedding of
+          <p class="arch-cordial-salutation">
+            With the divine blessings of Baba Baidyanath &amp; Mata Parvati,<br>
+            we cordially invite you to celebrate the wedding ceremony of
           </p>
 
-          <!-- Couple & Respective Family Details -->
-          <div class="couple-arch-showcase arch-reveal-item" data-order="3">
+          <!-- Groom & Bride Lineage Block -->
+          <div class="arch-couple-block">
             
-            <!-- Groom Card -->
-            <div class="person-arch-card groom-card">
-              <span class="role-tag">The Groom</span>
-              <h2 class="person-name">Prasoon</h2>
-              <div class="family-lineage">
-                <span class="kin-title">Son of</span>
-                <p class="kin-names">Mr. Sanjay Kumar Singh<br><span class="and-sym">&amp;</span> Mrs. Sunita Singh</p>
-                <div class="sibling-block">
-                  <span class="kin-title">Bhaiya &amp; Bhabhi</span>
-                  <p class="sibling-names">Mr. Prashant Parihar<br><span class="and-sym">&amp;</span> Mrs. Twinkle Singh</p>
+            <!-- Groom Lineage -->
+            <div class="couple-profile groom-profile">
+              <h1 class="couple-name">Prasoon</h1>
+              <span class="relation-role">The Groom</span>
+              <div class="parent-lineage">
+                <span class="lineage-kicker">Son of</span>
+                <p class="parents-text">Smt. Sunita Singh &amp; Shri Sanjay Kumar Singh</p>
+                <div class="sibling-lineage">
+                  <span class="lineage-kicker">Bhaiya &amp; Bhabhi</span>
+                  <p class="parents-text">Smt. Twinkle Singh &amp; Shri Prashant Parihar</p>
                 </div>
-                <span class="city-badge"><i class="fa-solid fa-location-dot"></i> Deoghar, Jharkhand</span>
+                <span class="city-location-pill"><i class="fa-solid fa-location-dot"></i> Deoghar, Jharkhand</span>
               </div>
             </div>
 
-            <!-- Auspicious Weds Gathbandhan Knot -->
-            <div class="sacred-knot-arch">
-              <div class="knot-trishul" title="Divine Blessings of Shiva-Parvati">
-                <span>🔱</span>
-              </div>
-              <span class="knot-phrase">weds</span>
-              <div class="knot-flower">🪷</div>
+            <!-- Auspicious Knot -->
+            <div class="sacred-knot-center">
+              <span class="sacred-trishul-knot">🔱</span>
+              <span class="with-connector">— With —</span>
+              <span class="sacred-feather">🪶</span>
             </div>
 
-            <!-- Bride Card -->
-            <div class="person-arch-card bride-card">
-              <span class="role-tag">The Bride</span>
-              <h2 class="person-name">Navya</h2>
-              <div class="family-lineage">
-                <span class="kin-title">Daughter of</span>
-                <p class="kin-names">Mr. Sanjay Kumar Singh<br><span class="and-sym">&amp;</span> Mrs. Sunita Singh</p>
-                <div class="city-badge" style="margin-top: 36px;"><i class="fa-solid fa-location-dot"></i> Dhanbad, Jharkhand</div>
+            <!-- Bride Lineage -->
+            <div class="couple-profile bride-profile">
+              <h1 class="couple-name">Navya</h1>
+              <span class="relation-role">The Bride</span>
+              <div class="parent-lineage">
+                <span class="lineage-kicker">Daughter of</span>
+                <p class="parents-text">Smt. Sunita Singh &amp; Shri Sanjay Kumar Singh</p>
+                <span class="city-location-pill bride-pill"><i class="fa-solid fa-location-dot"></i> Dhanbad, Jharkhand</span>
               </div>
             </div>
 
           </div>
 
-          <!-- Auspicious Wedding Proclamation -->
-          <div class="arch-reveal-item wedding-date-highlight" data-order="4">
-            <div class="gold-trishul-divider"><span>🌿</span> <span>❦ ❖ ❦</span> <span>🌿</span></div>
-            <p class="grand-dates-tag">27th — 31st January 2027</p>
-            <p class="grand-places-tag">Deoghar &bull; Dhanbad &bull; Jharkhand</p>
-            <p class="grand-reception-tag">✨ Grand Reception: 6th February 2027 &bull; Ranchi ✨</p>
+          <!-- Main Muhurat Date Block -->
+          <div class="arch-wedding-date-kicker">
+            <div class="divider-gold-knot">❦ ❖ ❦</div>
+            <p class="wedding-day-title">Sunday,</p>
+            <h2 class="wedding-date-title">31 January 2027</h2>
+            <p class="wedding-place-subtitle">The Wedding Bells • Dhanbad, Jharkhand</p>
           </div>
+
         </div>
 
+        <!-- Palace Silhouette at Bottom -->
+        <div class="arch-bottom-palace"></div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 6: "SCRATCH TO REVEAL" THREE-CARD INTERACTIVE GRID
-         (Date, Time, Venue with Gold-Foil Metallic Coating)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="scratch-reveal-section" id="scratch-details" aria-label="Scratch to Reveal Wedding Details">
-      <div class="section-title-wrap">
-        <span class="kicker">INTERACTIVE REVEAL</span>
-        <h2 class="section-heading">Scratch to Reveal The Details</h2>
-        <div class="gold-trishul-divider">❦ ❖ ❦</div>
-        <p class="scratch-instruction-note">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Rub each card with your finger or mouse to scrub away the royal gold foil
-        </p>
+    <!-- ═══════════════════════════════════════
+         SCENE 4: THREE-CARD GOLD FOIL "SCRATCH TO REVEAL"
+         ═══════════════════════════════════════ -->
+    <section class="scratch-reveal-wrapper" id="scratch-section">
+      <div class="editorial-section-header">
+        <span class="kicker-sub">SCRATCH TO REVEAL</span>
+        <h2 class="editorial-title">The Details</h2>
+        <div class="divider-gold-knot">❦ ❖ ❦</div>
       </div>
 
-      <div class="scratch-cards-grid">
+      <!-- 3 Rounded Vertical Cards Grid -->
+      <div class="scratch-cards-container">
         
-        <!-- Card 1: Sacred Date -->
-        <div class="scratch-card-box" id="scratch-box-date">
-          <div class="card-under-content">
-            <div class="card-icon-round"><i class="fa-regular fa-calendar-check"></i></div>
-            <span class="card-type-kicker">AUSPICIOUS DATE</span>
-            <h3 class="card-main-val">31 Jan 2027</h3>
-            <p class="card-sub-val">Sunday &bull; Shubh Muhurat</p>
-            <span class="card-event-badge">Saat Phere &bull; Vivah</span>
+        <!-- Card 1: DATE -->
+        <div class="scratch-single-card" id="card-date-box">
+          <div class="card-secret-content">
+            <span class="card-secret-category">DATE</span>
+            <div class="card-secret-big">31</div>
+            <div class="card-secret-sub">Jan 2027</div>
+            <span class="card-secret-note">Sunday Muhurat</span>
           </div>
-          <canvas class="scratch-canvas" id="canvas-scratch-date" width="280" height="230"></canvas>
-          <div class="revealed-sparkle-stamp"><i class="fa-solid fa-check"></i> REVEALED</div>
+          <canvas class="scratch-foil-canvas" id="canvas-date" width="220" height="280"></canvas>
         </div>
 
-        <!-- Card 2: Auspicious Time -->
-        <div class="scratch-card-box" id="scratch-box-time">
-          <div class="card-under-content">
-            <div class="card-icon-round"><i class="fa-regular fa-clock"></i></div>
-            <span class="card-type-kicker">VEDIC TIME</span>
-            <h3 class="card-main-val">Evening</h3>
-            <p class="card-sub-val">06:00 PM Onwards</p>
-            <span class="card-event-badge">Baraat &bull; Jai Mala</span>
+        <!-- Card 2: TIME -->
+        <div class="scratch-single-card" id="card-time-box">
+          <div class="card-secret-content">
+            <span class="card-secret-category">TIME</span>
+            <div class="card-secret-big">6:00</div>
+            <div class="card-secret-sub">in the evening</div>
+            <span class="card-secret-note">Baraat &amp; Phere</span>
           </div>
-          <canvas class="scratch-canvas" id="canvas-scratch-time" width="280" height="230"></canvas>
-          <div class="revealed-sparkle-stamp"><i class="fa-solid fa-check"></i> REVEALED</div>
+          <canvas class="scratch-foil-canvas" id="canvas-time" width="220" height="280"></canvas>
         </div>
 
-        <!-- Card 3: Grand Venue -->
-        <div class="scratch-card-box" id="scratch-box-venue">
-          <div class="card-under-content">
-            <div class="card-icon-round"><i class="fa-solid fa-archway"></i></div>
-            <span class="card-type-kicker">WEDDING VENUE</span>
-            <h3 class="card-main-val" style="font-size: 20px;">The Wedding Bells</h3>
-            <p class="card-sub-val">Baramuri, Dhanbad</p>
-            <span class="card-event-badge">Jharkhand – 826013</span>
+        <!-- Card 3: VENUE -->
+        <div class="scratch-single-card" id="card-venue-box">
+          <div class="card-secret-content">
+            <span class="card-secret-category">VENUE</span>
+            <div class="card-secret-big venue-text">The Wedding Bells</div>
+            <div class="card-secret-sub">Bhuli Hirak Road</div>
+            <span class="card-secret-note">Dhanbad, Jharkhand</span>
           </div>
-          <canvas class="scratch-canvas" id="canvas-scratch-venue" width="280" height="230"></canvas>
-          <div class="revealed-sparkle-stamp"><i class="fa-solid fa-check"></i> REVEALED</div>
+          <canvas class="scratch-foil-canvas" id="canvas-venue" width="220" height="280"></canvas>
         </div>
 
       </div>
 
-      <!-- Quick Reveal-All Button -->
-      <div class="scratch-action-row">
-        <button class="action-btn gold-glow" id="btn-reveal-all">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Reveal All Details Instantly
+      <!-- Subtle Prompt & Uncover All Action -->
+      <div class="scratch-bottom-bar">
+        <p class="rub-instruction-text"><i class="fa-solid fa-hand-pointer"></i> Rub each card with your finger to uncover</p>
+        <div class="ornamental-gold-divider-img">❦ ❖ ❦</div>
+        <button class="action-btn gold-glow uncover-btn" id="uncover-all-btn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Uncover All Details
         </button>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 7: CELESTIAL SHIVA & PARVATI BLESSINGS (BAIDYANATH DHAM)
-         (Shower Divine Blessings, Bel Patra & Sound Mandir Ghanta)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="shiva-parvati-section" id="shiva-parvati" aria-label="Shiva and Parvati Divine Blessings">
-      <div class="shiva-parvati-bg-art"></div>
-      <div class="shiva-overlay-glow"></div>
-
-      <div class="section-title-wrap relative-z">
-        <span class="kicker">BABA BAIDYANATH DHAM DEOGHAR BLESSINGS</span>
-        <h2 class="section-heading">Dedicated to Lord Shiva &amp; Mata Parvati</h2>
-        <div class="gold-trishul-divider">
-          <span>🌿</span> <span>🔱</span> <span>🌙</span> <span>🔱</span> <span>🌿</span>
-        </div>
+    <!-- ═══════════════════════════════════════
+         SCENE 5: "THE DAY / ORDER OF EVENTS" (VERTICAL GOLD TIMELINE & MEDALLIONS)
+         ═══════════════════════════════════════ -->
+    <section class="order-of-events-wrapper" id="order-of-events">
+      <div class="editorial-section-header">
+        <span class="kicker-sub">THE DAY</span>
+        <h2 class="editorial-title">Order of Events</h2>
+        <div class="divider-gold-knot">❦ ❖ ❦</div>
       </div>
 
-      <div class="shiva-parvati-card relative-z">
-        
-        <div class="temple-shrine-header">
-          <div class="shiva-sacred-icon">
-            <span class="om-namah-shivaya">॥ ॐ नमः शिवाय • ॐ पार्वतीपतये नमः ॥</span>
+      <div class="timeline-clean-container">
+        <!-- Connecting Vertical Gold Spine Line -->
+        <div class="timeline-gold-spine"></div>
+
+        <!-- 1. TILAK CEREMONY -->
+        <div class="timeline-item-entry">
+          <div class="timeline-medallion-badge pooja-badge" title="Tilak Pooja">
+            <svg viewBox="0 0 100 100" class="medallion-svg">
+              <circle cx="50" cy="50" r="46" fill="url(#goldGradMed)" stroke="#b8860b" stroke-width="2.5"/>
+              <circle cx="50" cy="50" r="41" fill="#fffdfa" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <!-- Sacred Diya & Tilak Motif -->
+              <path d="M50 26C50 26 58 36 58 43C58 47.4 54.4 51 50 51C45.6 51 42 47.4 42 43C42 36 50 26 50 26Z" fill="#e65100"/>
+              <ellipse cx="50" cy="45" rx="4" ry="5" fill="#fbc02d"/>
+              <path d="M30 54C34 68 66 68 70 54C70 58 64 68 50 68C36 68 30 58 30 54Z" fill="#b45309"/>
+              <path d="M42 68H58L62 76H38L42 68Z" fill="#92400e"/>
+            </svg>
+            <span class="medallion-label">TILAK</span>
           </div>
-          <p class="shiva-temple-note">
-            In the sacred spiritual abode of <strong>Deoghar</strong>, sanctified by the eternal Jyotirlinga of <strong>Baba Baidyanath</strong> and the sacred shrine of <strong>Maa Parvati</strong> tied with the red holy Gathbandhan, we invoke their eternal blessings for a life filled with supreme devotion, fortitude, companionship, and boundless joy.
-          </p>
+          <div class="timeline-details-block">
+            <span class="event-clean-date">27 JANUARY 2027</span>
+            <span class="event-clean-time">6:00 PM Onwards</span>
+            <p class="event-clean-venue"><strong>Venue:—</strong> Hanuman Mandir Premises, Deoghar, Jharkhand</p>
+          </div>
         </div>
 
-        <!-- Sacred Karpura Gauram Shloka Box -->
-        <div class="sacred-shloka-box">
-          <p class="sanskrit-big-verse">
+        <!-- 2. HALDI & MEHENDI -->
+        <div class="timeline-item-entry">
+          <div class="timeline-medallion-badge haldi-badge" title="Haldi & Mehendi">
+            <svg viewBox="0 0 100 100" class="medallion-svg">
+              <circle cx="50" cy="50" r="46" fill="url(#goldGradMed)" stroke="#b8860b" stroke-width="2.5"/>
+              <circle cx="50" cy="50" r="41" fill="#fffdfa" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <!-- Turmeric Urli Bowl & Floral Motif -->
+              <ellipse cx="50" cy="58" rx="26" ry="12" fill="#d97706"/>
+              <ellipse cx="50" cy="55" rx="24" ry="9" fill="#f59e0b"/>
+              <path d="M35 55C35 44 65 44 65 55Z" fill="#fbbf24"/>
+              <circle cx="50" cy="44" r="5" fill="#fef08a"/>
+              <path d="M22 62C26 66 32 64 34 60" stroke="#059669" stroke-width="2" fill="none"/>
+              <path d="M78 62C74 66 68 64 66 60" stroke="#059669" stroke-width="2" fill="none"/>
+            </svg>
+            <span class="medallion-label">HALDI &amp; MEHENDI</span>
+          </div>
+          <div class="timeline-details-block">
+            <span class="event-clean-date">30 JANUARY 2027</span>
+            <span class="event-clean-time">Haldi: 11:00 AM • Mehendi: 3:00 PM</span>
+            <p class="event-clean-venue"><strong>Venue:—</strong> Hotel Ekta International, Deoghar, Jharkhand</p>
+          </div>
+        </div>
+
+        <!-- 3. SANGEET & ROYAL DHAMAAL -->
+        <div class="timeline-item-entry">
+          <div class="timeline-medallion-badge sangeet-badge" title="Sangeet & Dhamaal">
+            <svg viewBox="0 0 100 100" class="medallion-svg">
+              <circle cx="50" cy="50" r="46" fill="url(#goldGradMed)" stroke="#b8860b" stroke-width="2.5"/>
+              <circle cx="50" cy="50" r="41" fill="#fffdfa" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <!-- Indian Dhol Drum with Musical Notes Motif -->
+              <ellipse cx="50" cy="50" rx="18" ry="24" fill="#92400e" transform="rotate(-30 50 50)"/>
+              <ellipse cx="38" cy="42" rx="7" ry="16" fill="#f59e0b" transform="rotate(-30 38 42)"/>
+              <path d="M38 42L62 58" stroke="#fef08a" stroke-width="1.5"/>
+              <path d="M68 28C72 26 78 30 76 36" stroke="#b45309" stroke-width="2" fill="none"/>
+              <circle cx="76" cy="36" r="3" fill="#b45309"/>
+              <circle cx="30" cy="28" r="2.5" fill="#d97706"/>
+            </svg>
+            <span class="medallion-label">SANGEET</span>
+          </div>
+          <div class="timeline-details-block">
+            <span class="event-clean-date">30 JANUARY 2027</span>
+            <span class="event-clean-time">6:30 PM Onwards</span>
+            <p class="event-clean-venue"><strong>Venue:—</strong> Hotel Ekta International, Deoghar, Jharkhand</p>
+          </div>
+        </div>
+
+        <!-- 4. BARAAT & SHUBH VIVAH (THE WEDDING CEREMONY) -->
+        <div class="timeline-item-entry featured-entry">
+          <div class="timeline-medallion-badge vivah-badge" title="Baraat & Vivah">
+            <svg viewBox="0 0 100 100" class="medallion-svg">
+              <circle cx="50" cy="50" r="46" fill="url(#goldGradMed)" stroke="#b8860b" stroke-width="2.5"/>
+              <circle cx="50" cy="50" r="41" fill="#fffdfa" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <!-- Decorated Royal Procession Horse under Chhatri Canopy -->
+              <path d="M50 22C42 22 36 28 36 32H64C64 28 58 22 50 22Z" fill="#dc2626"/>
+              <circle cx="50" cy="20" r="3" fill="#f59e0b"/>
+              <line x1="50" y1="32" x2="50" y2="48" stroke="#b45309" stroke-width="2"/>
+              <!-- Royal Horse Silhouette -->
+              <path d="M42 46C38 48 35 55 35 60C37 60 42 55 45 52L46 68L49 68L49 58L53 58L53 68L56 68L58 52C63 52 68 56 70 60C70 54 66 48 58 48Z" fill="#b45309"/>
+            </svg>
+            <span class="medallion-label">BARAAT &amp; VIVAH</span>
+          </div>
+          <div class="timeline-details-block">
+            <span class="event-clean-date featured-date">31 JANUARY 2027</span>
+            <span class="event-clean-time">6:00 PM Onwards (Baraat &amp; Saat Phere)</span>
+            <p class="event-clean-venue"><strong>Venue:—</strong> The Wedding Bells, Baramuri, Bhuli Hirak Road, Dhanbad</p>
+          </div>
+        </div>
+
+        <!-- 5. GRAND RECEPTION (RANCHI CELEBRATION) -->
+        <div class="timeline-item-entry">
+          <div class="timeline-medallion-badge reception-badge" title="Grand Reception">
+            <svg viewBox="0 0 100 100" class="medallion-svg">
+              <circle cx="50" cy="50" r="46" fill="url(#goldGradMed)" stroke="#1e3a5f" stroke-width="2.5"/>
+              <circle cx="50" cy="50" r="41" fill="#fffdfa" stroke="#c8a267" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <!-- Clinking Champagne Flutes & Royal Celebration Star -->
+              <path d="M40 34L48 50V68H38V72H62V68H52V50L60 34H40Z" fill="none" stroke="#1e3a5f" stroke-width="2.5"/>
+              <path d="M43 40H57L52 50H48L43 40Z" fill="#f59e0b"/>
+              <circle cx="50" cy="24" r="3.5" fill="#f59e0b"/>
+            </svg>
+            <span class="medallion-label">RECEPTION</span>
+          </div>
+          <div class="timeline-details-block">
+            <span class="event-clean-date">06 FEBRUARY 2027</span>
+            <span class="event-clean-time">7:00 PM Onwards</span>
+            <p class="event-clean-venue"><strong>Venue:—</strong> Dulhan Banquet Hall, Ranchi, Jharkhand</p>
+          </div>
+        </div>
+
+        <defs>
+          <linearGradient id="goldGradMed" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#bf953f"/>
+            <stop offset="0.3" stop-color="#fcf6ba"/>
+            <stop offset="0.7" stop-color="#b38728"/>
+            <stop offset="1" stop-color="#aa771c"/>
+          </linearGradient>
+        </defs>
+
+      </div>
+
+      <div class="timeline-family-closing">
+        <p>"With love and blessings from both families"</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SCENE 6: CELESTIAL BABA BAIDYANATH & MATA PARVATI BLESSINGS
+         (Non-repetitive spiritual sanctuary with Mandir Ghanta & Bel Patra Shower)
+         ═══════════════════════════════════════ -->
+    <section class="shiva-parvati-sanctuary" id="shiva-parvati">
+      <div class="shiva-sanctuary-card">
+        
+        <span class="kicker-sub gold-text">DEOGHAR JYOTIRLINGA BLESSINGS</span>
+        <h2 class="sanctuary-title">Divine Grace of Baba Baidyanath &amp; Mata Parvati</h2>
+        
+        <div class="sanctuary-shloka-frame">
+          <p class="sanctuary-sanskrit-verse">
             कर्पूरगौरं करुणावतारं संसारसारम् भुजगेन्द्रहारम्।<br>
             सदावसन्तं हृदयारविन्दे भवं भवानीसहितं नमामि॥
           </p>
-          <div class="shloka-english-translation">
-            "I salute Lord Shiva, white like camphor, the very embodiment of compassion, the essence of creation, wearing the serpent king as his garland, ever dwelling in the lotus of our hearts together with Goddess Bhavani (Parvati)."
-          </div>
+          <p class="sanctuary-english-verse">
+            "We salute Lord Shiva, white as camphor, the ocean of mercy and companion of Goddess Bhavani, invoking eternal companionship, devotion, and boundless prosperity."
+          </p>
         </div>
 
-        <!-- Interactive Divine Shower & Authentic Mandir Ghanta Actions -->
-        <div class="divine-interactive-action">
+        <!-- Interactive Divine Actions -->
+        <div class="sanctuary-interactive-buttons">
           <button class="action-btn gold-glow aarti-shower-btn" id="flower-shower-btn">
-            <span>🌿</span> Shower Bel Patra &amp; Divine Flowers <span>🌸</span>
+            <span>🌿</span> Shower Bel Patra &amp; Flowers <span>🌸</span>
           </button>
           
           <button class="action-btn temple-bell-btn" id="temple-bell-btn">
@@ -378,481 +450,171 @@
                 <circle cx="32" cy="38" r="2" fill="#78350f"/>
                 <path d="M32 49V56" stroke="#92400e" stroke-width="2.2" stroke-linecap="round"/>
                 <circle cx="32" cy="57" r="3.2" fill="#f59e0b" stroke="#78350f" stroke-width="1"/>
-                <defs>
-                  <linearGradient id="ghantaGoldGrad" x1="12" y1="20" x2="52" y2="49" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#fef08a"/>
-                    <stop offset="0.3" stop-color="#f59e0b"/>
-                    <stop offset="0.7" stop-color="#d97706"/>
-                    <stop offset="1" stop-color="#92400e"/>
-                  </linearGradient>
-                </defs>
               </svg>
             </span>
             Sound Mandir Ghanta (घंटा) <span>🪔</span>
           </button>
         </div>
 
-        <div class="shiva-attributes-grid">
-          <div class="attr-pill">
-            <i class="fa-solid fa-moon"></i>
-            <div>
-              <strong>Chandra &amp; Serenity</strong>
-              <span>Eternal peace and inner calmness in marital journey</span>
-            </div>
-          </div>
-          <div class="attr-pill">
-            <i class="fa-solid fa-fire"></i>
-            <div>
-              <strong>Agni &amp; Sacred Pheras</strong>
-              <span>The divine witness to timeless Vedic vows</span>
-            </div>
-          </div>
-          <div class="attr-pill">
-            <i class="fa-solid fa-shield-halved"></i>
-            <div>
-              <strong>Shakti &amp; Fortitude</strong>
-              <span>Valor, honor, and protective grace</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 8: INVITATION CARDS (LAGNA PATRIKA)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="card-leaves-flow-section" id="invitation-cards">
-      <div class="section-title-wrap">
-        <span class="kicker">SACRED TRADITION</span>
-        <h2 class="section-heading">Lagna Patrika (Invitation Cards)</h2>
-        <div class="gold-trishul-divider">❦ ❖ ❦</div>
+    <!-- ═══════════════════════════════════════
+         SCENE 7: DESTINATION VENUES SPOTLIGHT (MAPS & DIRECTIONS)
+         ═══════════════════════════════════════ -->
+    <section class="destinations-spotlight" id="venues">
+      <div class="editorial-section-header">
+        <span class="kicker-sub">THE DESTINATIONS</span>
+        <h2 class="editorial-title">Wedding Venues</h2>
+        <div class="divider-gold-knot">❦ ❖ ❦</div>
       </div>
 
-      <div class="leaves-continuous-flow">
+      <div class="venues-spotlight-grid">
         
-        <!-- Card 1: Deoghar Festivities -->
-        <div class="leaf-flow-item" id="card-page-1">
-          <div class="leaf-header-tag">
-            <h3>Deoghar Festivities &bull; Tilak, Haldi, Mehendi &amp; Sangeet</h3>
-          </div>
-          <div class="leaf-card-frame">
-            <img src="./images/card_p1.png" alt="Wedding Celebrations Itinerary Deoghar" class="leaf-img" loading="lazy">
-            <div class="leaf-card-footer">
-              <span>📍 Hotel Ekta International &bull; Deoghar, Jharkhand</span>
-              <button class="action-btn gold-glow view-leaf-btn" data-src="./images/card_p1.png" data-title="Deoghar Celebrations • Tilak, Haldi, Mehendi, Sangeet">
-                <i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen
-              </button>
-            </div>
+        <!-- Venue 1: The Wedding Bells (Dhanbad - Main Vivah) -->
+        <div class="venue-spotlight-card featured-venue">
+          <div class="venue-badge-icon"><i class="fa-solid fa-archway"></i></div>
+          <span class="venue-event-type">Shubh Vivah (31st Jan 2027)</span>
+          <h3 class="venue-name">The Wedding Bells</h3>
+          <p class="venue-address">Baramuri, Bhuli Hirak Road, Near Asarfi Hospital, Jharudih, Dhanbad, Jharkhand – 826013</p>
+          <div class="venue-cta-row">
+            <a href="https://www.google.com/maps/search/The+Wedding+Bells+Baramuri+Bhuli+Hirak+Road+Near+Asarfi+Hospital+Dhanbad+Jharkhand+826013" target="_blank" rel="noopener" class="action-btn gold-glow">
+              <i class="fa-solid fa-diamond-turn-right"></i> Google Maps
+            </a>
+            <button class="action-btn copy-btn" data-address="The Wedding Bells, Baramuri, Bhuli Hirak Road, Near Asarfi Hospital, Jharudih, Dhanbad, Jharkhand – 826013">
+              <i class="fa-regular fa-copy"></i> Copy
+            </button>
           </div>
         </div>
 
-        <div class="leaf-flow-connector">
-          <span class="connector-line"></span>
-          <span class="connector-icon">❦ ❖ ❦</span>
-          <span class="connector-line"></span>
+        <!-- Venue 2: Dulhan Banquet Hall (Ranchi - Grand Reception) -->
+        <div class="venue-spotlight-card reception-venue">
+          <div class="venue-badge-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+          <span class="venue-event-type">Grand Reception (6th Feb 2027)</span>
+          <h3 class="venue-name">Dulhan Banquet Hall</h3>
+          <p class="venue-address">Dulhan Banquet Hall, Ranchi, Jharkhand</p>
+          <div class="venue-cta-row">
+            <a href="https://www.google.com/maps/search/Dulhan+Banquet+Hall+Ranchi+Jharkhand" target="_blank" rel="noopener" class="action-btn gold-glow">
+              <i class="fa-solid fa-diamond-turn-right"></i> Google Maps
+            </a>
+            <button class="action-btn copy-btn" data-address="Dulhan Banquet Hall, Ranchi, Jharkhand">
+              <i class="fa-regular fa-copy"></i> Copy
+            </button>
+          </div>
         </div>
 
-        <!-- Card 2: The Wedding Ceremony (Dhanbad) -->
-        <div class="leaf-flow-item" id="card-page-2">
-          <div class="leaf-header-tag">
-            <h3>The Wedding Ceremony &bull; Shubh Vivah Muhurat</h3>
-          </div>
-          <div class="leaf-card-frame">
-            <img src="./images/card_p2.png" alt="Wedding Ceremony Dhanbad" class="leaf-img" loading="lazy">
-            <div class="leaf-card-footer">
-              <span>📍 The Wedding Bells &bull; Dhanbad, Jharkhand</span>
-              <button class="action-btn gold-glow view-leaf-btn" data-src="./images/card_p2.png" data-title="The Wedding Ceremony • Shubh Vivah Muhurat">
-                <i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen
-              </button>
-            </div>
+        <!-- Venue 3: Hotel Ekta International (Deoghar - Festivities) -->
+        <div class="venue-spotlight-card">
+          <div class="venue-badge-icon"><i class="fa-solid fa-hotel"></i></div>
+          <span class="venue-event-type">Haldi, Mehendi &amp; Sangeet (30th Jan 2027)</span>
+          <h3 class="venue-name">Hotel Ekta International</h3>
+          <p class="venue-address">S.S.M Jalan Road, Kanu Tola, Near Bajrangi Chowk, Deoghar, Jharkhand – 814112</p>
+          <div class="venue-cta-row">
+            <a href="https://www.google.com/maps/search/Hotel+Ekta+International+SSM+Jalan+Road+Deoghar+Jharkhand+814112" target="_blank" rel="noopener" class="action-btn gold-glow">
+              <i class="fa-solid fa-diamond-turn-right"></i> Google Maps
+            </a>
+            <button class="action-btn copy-btn" data-address="Hotel Ekta International, S.S.M Jalan Road, Kanu Tola, Near Bajrangi Chowk, Deoghar, Jharkhand – 814112">
+              <i class="fa-regular fa-copy"></i> Copy
+            </button>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 9: VERTICAL TIMELINE — "ORDER OF EVENTS"
-         (With Gold Connecting Spine & Medallions, Including Reception Feb 6)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="events-section" id="itinerary" aria-label="Order of Events">
-      <div class="section-title-wrap">
-        <span class="kicker">THE CELEBRATIONS</span>
-        <h2 class="section-heading">Order of Events</h2>
-        <div class="gold-trishul-divider">❦ ❖ ❦</div>
+    <!-- ═══════════════════════════════════════
+         SCENE 8: COUNTDOWN TIMER & BLESSINGS CLOSING
+         ═══════════════════════════════════════ -->
+    <section class="countdown-closing-wrapper">
+      
+      <div class="countdown-box">
+        <h3 class="countdown-heading">Counting Down To The Sacred Saat Phere</h3>
+        <p class="countdown-target">Sunday, 31st January 2027 • Dhanbad, Jharkhand</p>
+
+        <div class="timer-digits-row" id="timer-grid" role="timer">
+          <div class="digit-box">
+            <span class="digit-num" id="days-count">75</span>
+            <span class="digit-lbl">Days</span>
+          </div>
+          <span class="digit-sep">:</span>
+          <div class="digit-box">
+            <span class="digit-num" id="hours-count">00</span>
+            <span class="digit-lbl">Hours</span>
+          </div>
+          <span class="digit-sep">:</span>
+          <div class="digit-box">
+            <span class="digit-num" id="minutes-count">00</span>
+            <span class="digit-lbl">Minutes</span>
+          </div>
+          <span class="digit-sep">:</span>
+          <div class="digit-box">
+            <span class="digit-num" id="seconds-count">00</span>
+            <span class="digit-lbl">Seconds</span>
+          </div>
+        </div>
+
+        <div class="calendar-sync-row">
+          <button class="action-btn gold-glow" id="add-to-calendar-btn">
+            <i class="fa-regular fa-calendar-plus"></i> Add to Google Calendar
+          </button>
+          <button class="action-btn" id="download-ics-btn">
+            <i class="fa-solid fa-download"></i> Save to Calendar (.ics)
+          </button>
+        </div>
       </div>
 
-      <div class="vertical-timeline-container">
-        <!-- Connecting Vertical Gold Spine Axis -->
-        <div class="timeline-gold-spine" aria-hidden="true"></div>
-
-        <!-- 1. Tilak Ceremony: POOJA THEME -->
-        <div class="timeline-row pooja-row">
-          <div class="timeline-medallion-badge pooja-medallion" title="Pooja & Blessings">
-            <i class="fa-solid fa-hands-praying"></i>
-          </div>
-          <article class="timeline-event-card pooja-card">
-            <div class="theme-header-pill pooja-pill"><i class="fa-solid fa-om"></i> Pooja &amp; Vedic Blessings</div>
-            <div class="event-meta">
-              <span class="event-date"><i class="fa-regular fa-calendar"></i> Wednesday, 27th January 2027</span>
-              <span class="event-time"><i class="fa-regular fa-clock"></i> 06:00 PM Onwards</span>
-            </div>
-            <h3 class="event-title">Tilak Ceremony</h3>
-            <p class="event-desc">
-              The auspicious ceremony of presenting the sacred Tilak, coconut, and blessings as the formal acceptance of union begins in the presence of elders and priests with Vedic chanting.
-            </p>
-            <div class="event-venue-tag">
-              <i class="fa-solid fa-location-dot"></i> New building near Hanuman Mandir, Deoghar, Jharkhand – 814112
-            </div>
-            <div class="dress-code">
-              <span class="dress-tag">🪔 Dress Code: Traditional Pooja Attire / Dhoti-Kurta &amp; Saree</span>
-            </div>
-          </article>
-        </div>
-
-        <!-- 2. Haldi Ceremony: COLOURFUL YELLOW THEME -->
-        <div class="timeline-row haldi-row">
-          <div class="timeline-medallion-badge haldi-medallion" title="Haldi Utsav">
-            <i class="fa-solid fa-seedling"></i>
-          </div>
-          <article class="timeline-event-card haldi-card">
-            <div class="theme-header-pill haldi-pill"><i class="fa-solid fa-sun"></i> Colourful Haldi Utsav</div>
-            <div class="event-meta">
-              <span class="event-date"><i class="fa-regular fa-calendar"></i> Saturday, 30th January 2027</span>
-              <span class="event-time"><i class="fa-regular fa-clock"></i> 11:00 AM Onwards</span>
-            </div>
-            <h3 class="event-title">Haldi &amp; Flower Shower</h3>
-            <p class="event-desc">
-              A vibrant morning of golden turmeric, fragrant sandalwood paste, marigold flower showers, and playful laughter preparing the bride and groom for their sacred vows.
-            </p>
-            <div class="event-venue-tag">
-              <i class="fa-solid fa-location-dot"></i> Hotel Ekta International, Deoghar, Jharkhand
-            </div>
-            <div class="dress-code">
-              <span class="dress-tag">🌻 Dress Code: Vibrant Sunshine Yellow &amp; Floral Splendor</span>
-            </div>
-          </article>
-        </div>
-
-        <!-- 3. Mehendi Ceremony: LUSH HENNA GREEN THEME -->
-        <div class="timeline-row mehendi-row">
-          <div class="timeline-medallion-badge mehendi-medallion" title="Mehendi">
-            <i class="fa-solid fa-leaf"></i>
-          </div>
-          <article class="timeline-event-card mehendi-card">
-            <div class="theme-header-pill mehendi-pill"><i class="fa-solid fa-spa"></i> Lush Mehendi Ki Raunak</div>
-            <div class="event-meta">
-              <span class="event-date"><i class="fa-regular fa-calendar"></i> Saturday, 30th January 2027</span>
-              <span class="event-time"><i class="fa-regular fa-clock"></i> 03:00 PM Onwards</span>
-            </div>
-            <h3 class="event-title">Mehendi Ceremony</h3>
-            <p class="event-desc">
-              Intricate henna motifs adorned with symbols of love and prosperity, amidst traditional folk songs and vibrant camaraderie under lush floral canopies.
-            </p>
-            <div class="event-venue-tag">
-              <i class="fa-solid fa-location-dot"></i> Hotel Ekta International, Deoghar, Jharkhand
-            </div>
-            <div class="dress-code">
-              <span class="dress-tag">🌿 Dress Code: Emerald Henna Green, Mint &amp; Sage Elegance</span>
-            </div>
-          </article>
-        </div>
-
-        <!-- 4. Sangeet: PARTY & MUSICAL NIGHT THEME -->
-        <div class="timeline-row sangeet-row">
-          <div class="timeline-medallion-badge sangeet-medallion" title="Sangeet Night">
-            <i class="fa-solid fa-music"></i>
-          </div>
-          <article class="timeline-event-card sangeet-card">
-            <div class="theme-header-pill sangeet-pill"><i class="fa-solid fa-champagne-glasses"></i> Royal Party &amp; DJ Night</div>
-            <div class="event-meta">
-              <span class="event-date"><i class="fa-regular fa-calendar"></i> Saturday, 30th January 2027</span>
-              <span class="event-time"><i class="fa-regular fa-clock"></i> 06:30 PM Onwards</span>
-            </div>
-            <h3 class="event-title">Sangeet &amp; Royal Dhamaal</h3>
-            <p class="event-desc">
-              An electrifying night of live dhol beats, family dance performances, royal feasts, sparkling lights, and celebratory musical euphoria under the starlit sky.
-            </p>
-            <div class="event-venue-tag">
-              <i class="fa-solid fa-location-dot"></i> Hotel Ekta International, Deoghar, Jharkhand
-            </div>
-            <div class="dress-code">
-              <span class="dress-tag">✨ Dress Code: Party Glamour / Bandhgala &amp; Glittering Lehengas</span>
-            </div>
-          </article>
-        </div>
-
-        <!-- 5. Shubh Vivah: GRAND VEDIC VIVAH (FEATURED DARK ROYAL CENTERPIECE) -->
-        <div class="timeline-row vivah-row featured-row">
-          <div class="timeline-medallion-badge vivah-medallion" title="Shubh Vivah">
-            <i class="fa-solid fa-fire-flame-curved"></i>
-          </div>
-          <article class="timeline-event-card grand-wedding-card">
-            <div class="theme-header-pill wedding-pill"><i class="fa-solid fa-crown"></i> The Auspicious Muhurat</div>
-            <div class="event-meta">
-              <span class="event-date"><i class="fa-regular fa-calendar"></i> Sunday, 31st January 2027</span>
-              <span class="event-time"><i class="fa-regular fa-clock"></i> Evening Auspicious Muhurat (Baraat &amp; Saat Phere)</span>
-            </div>
-            <h3 class="event-title">✦ Shubh Vivah (The Wedding Ceremony) ✦</h3>
-            <p class="event-desc">
-              The grand procession (Baraat), Jai Mala exchange, and the sacred Saat Phere around the holy Vedic fire as Prasoon &amp; Navya take their eternal seven vows of companionship, duty, and love amidst sacred Vedic mantras.
-            </p>
-            <div class="event-venue-tag">
-              <i class="fa-solid fa-location-dot"></i> The Wedding Bells, Baramuri, Bhuli Hirak Road, Near Asarfi Hospital, Jharudih, Dhanbad, Jharkhand – 826013
-            </div>
-            <div class="dress-code">
-              <span class="dress-tag">👑 Dress Code: Grand Royal Attire / Sherwani with Safa &amp; Banarasi Silk</span>
-            </div>
-          </article>
-        </div>
-
-        <!-- 6. Grand Reception (RANCHI): ROYAL CELEBRATION THEME (NEW) -->
-        <div class="timeline-row reception-row">
-          <div class="timeline-medallion-badge reception-medallion" title="Grand Reception">
-            <i class="fa-solid fa-champagne-glasses"></i>
-          </div>
-          <article class="timeline-event-card reception-card">
-            <div class="theme-header-pill reception-pill"><i class="fa-solid fa-glass-water"></i> Grand Reception &bull; Ranchi</div>
-            <div class="event-meta">
-              <span class="event-date"><i class="fa-regular fa-calendar"></i> Saturday, 6th February 2027</span>
-              <span class="event-time"><i class="fa-regular fa-clock"></i> 07:00 PM Onwards</span>
-            </div>
-            <h3 class="event-title">Wedding Reception</h3>
-            <p class="event-desc">
-              An enchanting evening of warm greetings, felicitations, sumptuous royal dining, and joyous memories as we celebrate the newly wedded couple with family and friends in Ranchi.
-            </p>
-            <div class="event-venue-tag">
-              <i class="fa-solid fa-location-dot"></i> Dulhan Banquet Hall, Ranchi, Jharkhand
-            </div>
-            <div class="dress-code">
-              <span class="dress-tag">🎩 Dress Code: Elegant Evening Formal / Indo-Western Royalty</span>
-            </div>
-          </article>
-        </div>
-
-        <p class="timeline-bottom-note">
-          "With love and blessings from both families"
+      <!-- Closing Blessing Quote -->
+      <div class="closing-quote-card">
+        <div class="closing-crest">❦ ❖ ❦</div>
+        <p class="closing-quote-text">
+          “May the sacred bond of marriage bring endless love, happiness, &amp; prosperity into their lives.”
         </p>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 10: COUNTDOWN TIMER TO SAAT PHERE
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="countdown-section" aria-label="Countdown to Wedding">
-      <div class="section-ornament">
-        <span class="ornament-line"></span>
-        <span class="ornament-gem">✦ ❖ ✦</span>
-        <span class="ornament-line"></span>
-      </div>
-      <h3 class="countdown-title">Counting Down To The Sacred Saat Phere</h3>
-      <p class="countdown-target-date">Sunday, 31st January 2027 &bull; Dhanbad, Jharkhand</p>
-
-      <div class="timer-grid" id="timer-grid" role="timer">
-        <div class="timer-card">
-          <span class="timer-num" id="days-count">75</span>
-          <span class="timer-label">Days</span>
-        </div>
-        <div class="timer-divider">:</div>
-        <div class="timer-card">
-          <span class="timer-num" id="hours-count">00</span>
-          <span class="timer-label">Hours</span>
-        </div>
-        <div class="timer-divider">:</div>
-        <div class="timer-card">
-          <span class="timer-num" id="minutes-count">00</span>
-          <span class="timer-label">Minutes</span>
-        </div>
-        <div class="timer-divider">:</div>
-        <div class="timer-card">
-          <span class="timer-num" id="seconds-count">00</span>
-          <span class="timer-label">Seconds</span>
-        </div>
-      </div>
-
-      <div class="calendar-action-row">
-        <button class="action-btn gold-glow" id="add-to-calendar-btn">
-          <i class="fa-regular fa-calendar-plus"></i> Add to Google Calendar
-        </button>
-        <button class="action-btn" id="download-ics-btn">
-          <i class="fa-solid fa-download"></i> Save to Apple / Outlook Calendar (.ics)
-        </button>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 11: VENUES SPOTLIGHT (4 VENUES INCL. DULHAN BANQUET HALL)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="venue-section" id="venues" aria-label="Wedding Venues">
-      <div class="section-title-wrap">
-        <span class="kicker">JOIN OUR DESTINATIONS</span>
-        <h2 class="section-heading">The Wedding Venues</h2>
-        <div class="gold-trishul-divider">❦ ❖ ❦</div>
-      </div>
-
-      <div class="venues-grid">
+        <p class="closing-sanskrit-tag">॥ मङ्गलं भगवान् विष्णुः मङ्गलं गरुडध्वजः ॥</p>
         
-        <!-- Venue 1: The Wedding Bells (Dhanbad) - FEATURED -->
-        <article class="venue-card featured-venue">
-          <div class="venue-top-banner dhanbad-banner">
-            <div class="banner-badge"><i class="fa-solid fa-archway"></i></div>
-            <h4>The Wedding Bells</h4>
-            <span class="venue-function-tag">Shubh Vivah (The Wedding Ceremony — 31st Jan 2027)</span>
-          </div>
-          <div class="venue-body">
-            <p class="venue-address-text">
-              <i class="fa-solid fa-location-dot"></i>
-              Baramuri, Bhuli Hirak Road, Near Asarfi Hospital, Jharudih, Dhanbad, Jharkhand – 826013.
-            </p>
-            <div class="venue-action-buttons">
-              <a href="https://www.google.com/maps/search/The+Wedding+Bells+Baramuri+Bhuli+Hirak+Road+Near+Asarfi+Hospital+Dhanbad+Jharkhand+826013" target="_blank" rel="noopener" class="action-btn gold-glow">
-                <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
-              </a>
-              <button class="action-btn copy-btn" data-address="The Wedding Bells, Baramuri, Bhuli Hirak Road, Near Asarfi Hospital, Jharudih, Dhanbad, Jharkhand – 826013.">
-                <i class="fa-regular fa-copy"></i> Copy Address
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Venue 2: Dulhan Banquet Hall (Ranchi) - NEW RECEPTION -->
-        <article class="venue-card reception-venue-card">
-          <div class="venue-top-banner ranchi-banner">
-            <div class="banner-badge"><i class="fa-solid fa-champagne-glasses"></i></div>
-            <h4>Dulhan Banquet Hall</h4>
-            <span class="venue-function-tag">Grand Reception (6th Feb 2027)</span>
-          </div>
-          <div class="venue-body">
-            <p class="venue-address-text">
-              <i class="fa-solid fa-location-dot"></i>
-              Dulhan Banquet Hall, Ranchi, Jharkhand.
-            </p>
-            <div class="venue-action-buttons">
-              <a href="https://www.google.com/maps/search/Dulhan+Banquet+Hall+Ranchi+Jharkhand" target="_blank" rel="noopener" class="action-btn gold-glow">
-                <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
-              </a>
-              <button class="action-btn copy-btn" data-address="Dulhan Banquet Hall, Ranchi, Jharkhand.">
-                <i class="fa-regular fa-copy"></i> Copy Address
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Venue 3: Hotel Ekta International (Deoghar) -->
-        <article class="venue-card">
-          <div class="venue-top-banner deoghar-banner">
-            <div class="banner-badge"><i class="fa-solid fa-hotel"></i></div>
-            <h4>Hotel Ekta International</h4>
-            <span class="venue-function-tag">Haldi, Mehendi &amp; Sangeet (30th Jan 2027)</span>
-          </div>
-          <div class="venue-body">
-            <p class="venue-address-text">
-              <i class="fa-solid fa-location-dot"></i>
-              S.S.M Jalan Road, Kanu Tola, Near Bajrangi Chowk, Dhobiya Tola, Shivganga Muhalla, Deoghar, Jharkhand – 814112.
-            </p>
-            <div class="venue-action-buttons">
-              <a href="https://www.google.com/maps/search/Hotel+Ekta+International+SSM+Jalan+Road+Deoghar+Jharkhand+814112" target="_blank" rel="noopener" class="action-btn gold-glow">
-                <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
-              </a>
-              <button class="action-btn copy-btn" data-address="Hotel Ekta international, S.S.M Jalan Road, Kanu Tola, Near Bajrangi Chowk, Dhobiya Tola, Shivganga Muhalla, Deoghar, Jharkhand – 814112.">
-                <i class="fa-regular fa-copy"></i> Copy Address
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Venue 4: Hanuman Mandir Premises (Tilak) -->
-        <article class="venue-card">
-          <div class="venue-top-banner tilak-banner">
-            <div class="banner-badge"><i class="fa-solid fa-place-of-worship"></i></div>
-            <h4>Hanuman Mandir Premises</h4>
-            <span class="venue-function-tag">Tilak Ceremony (27th Jan 2027)</span>
-          </div>
-          <div class="venue-body">
-            <p class="venue-address-text">
-              <i class="fa-solid fa-location-dot"></i>
-              New building near Hanuman Mandir, Deoghar, Jharkhand – 814112.
-            </p>
-            <div class="venue-action-buttons">
-              <a href="https://www.google.com/maps/search/Hanuman+Mandir+Deoghar+Jharkhand+814112" target="_blank" rel="noopener" class="action-btn gold-glow">
-                <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
-              </a>
-              <button class="action-btn copy-btn" data-address="New building near Hanuman Mandir, Deoghar, Jharkhand – 814112.">
-                <i class="fa-regular fa-copy"></i> Copy Address
-              </button>
-            </div>
-          </div>
-        </article>
-
+        <div class="share-box-action">
+          <button class="action-btn gold-glow share-btn-large" id="share-card-btn">
+            <i class="fa-solid fa-share-nodes"></i> Share Wedding Invitation on WhatsApp
+          </button>
+        </div>
       </div>
+
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         STAGE 12: CLOSING BLESSING & SHARE INVITATION
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="closing-blessing-section" id="closing-blessing">
-      <div class="blessing-quote-card">
-        <div class="crest-quote">❦ ❖ ❦</div>
-        <p class="blessing-quote-text">
-          “ May the sacred bond of marriage bring endless love, happiness, &amp; prosperity into their lives. ”
-        </p>
-        <p class="blessing-quote-shloka">॥ मङ्गलं भगवान् विष्णुः मङ्गलं गरुडध्वजः ॥</p>
-      </div>
-
-      <div class="share-invitation-box">
-        <p>Celebrate this sacred union with family &amp; friends:</p>
-        <button class="action-btn gold-glow share-btn-main" id="share-card-btn">
-          <i class="fa-solid fa-share-nodes"></i> Share Wedding Invitation on WhatsApp
-        </button>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════
          FOOTER WITH FAMILY REGARDS (PRASHANT & TWINKLE INCLUDED)
-         ═══════════════════════════════════════════════════════════ -->
-    <footer class="card-footer">
+         ═══════════════════════════════════════ -->
+    <footer class="editorial-footer">
       <div class="footer-spiritual-badge">
         <span>॥ ॐ नमः शिवाय • शुभ विवाह ॥</span>
       </div>
 
-      <div class="family-regards">
+      <div class="family-regards-content">
         <h4>With Warmest Regards &amp; Cordial Compliments From</h4>
-        <p class="regards-primary">
-          Mr. Sanjay Kumar Singh &amp; Mrs. Sunita Singh
+        <p class="regards-parents">
+          Smt. Sunita Singh &amp; Shri Sanjay Kumar Singh
         </p>
-        <p class="regards-siblings">
-          Prashant Parihar &amp; Twinkle Singh
+        <p class="regards-bhaiya">
+          Smt. Twinkle Singh &amp; Shri Prashant Parihar
         </p>
-        <p class="regards-all">
+        <p class="regards-family">
           Near &amp; Dear Relatives, Friends &amp; Well-Wishers
         </p>
       </div>
 
-      <div class="footer-blessing">
-        <p>॥ ॐ शान्तिः शान्तिः शान्तिः ॥</p>
+      <div class="footer-bottom-shloka">
+        <p>॥ मङ्गलं पुण्डरीकाक्षो मङ्गलाय तनो हरिः ॥</p>
         <small>May the divine grace of Baba Baidyanath &amp; Maa Parvati forever illuminate your presence.</small>
       </div>
     </footer>
 
   </main>
 
-  <!-- Fullscreen Modal for Lagna Patrika / Invitation Cards -->
-  <div class="modal-backdrop" id="photo-lightbox" role="dialog" aria-modal="true">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="close-lightbox" aria-label="Close Lightbox">&times;</button>
-      <img id="lightbox-img" src="" alt="Invitation Card Fullscreen">
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
-
-  <!-- Hidden YouTube Player Container for Ullam Paadum Soundtrack -->
+  <!-- Hidden YouTube Player Container for Ullam Paadum Soundtrack (Trimmed at 15s) -->
   <div id="yt-player-container" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;" aria-hidden="true"></div>
 
   <!-- Audio Synthesizer & Engine -->
   <script src="audio.js"></script>
-  <!-- Interactions & Cinematic Choreography -->
+  <!-- Interactions, Scratch Canvas & Cinematic Sequence -->
   <script src="script.js"></script>
 </body>
 </html>
