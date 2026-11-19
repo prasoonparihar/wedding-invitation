@@ -653,6 +653,27 @@ body:not(.envelope-active) .cinematic-portal-gate {
   border-top: 1px dotted rgba(200, 162, 103, 0.35);
 }
 
+.lineage-sub-grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.lineage-sub-item {
+  text-align: center;
+  min-width: 130px;
+}
+
+.rel-tag {
+  font-family: var(--font-royal);
+  font-size: 11px;
+  color: var(--gold-dark);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 .city-location-pill {
   display: inline-block;
   font-size: 11px;
@@ -1276,7 +1297,15 @@ body:not(.envelope-active) .cinematic-portal-gate {
   font-size: 16px;
   color: var(--gold-dark);
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+}
+
+.regards-elders {
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 3px;
 }
 
 .regards-family {
