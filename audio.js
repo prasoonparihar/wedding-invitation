@@ -2,13 +2,14 @@
  * ==========================================================
  * ROYAL WEDDING AUDIO ENGINE (YouTube API + Web Audio API)
  * Seamlessly integrates:
- *  1. Primary Soundtrack: "Tere Bina" (Guru / A.R. Rahman)
- *     YouTube Video ID: e8dLwwJ1dsE
+ *  1. Primary Soundtrack: "Ullam Paadum - Wedding Song | 2 States"
+ *     YouTube Video ID: e8dLwwJ1dsE (Trimmed from 00:15 onwards)
  *  2. Procedural Fallback & Auspicious Tracks:
  *     - Shiv-Shakti & Royal Shehnai Mangalam
  *     - Royal Rajputana Sitar & Flute
  *     - Celestial Wedding Symphony & Harp
- *  3. Custom Song Upload (MP3 / WAV / M4A)
+ *  3. Authentic Temple Bell (Mandir Ghanta) Physical Acoustic Synthesizer
+ *  4. Custom Song Upload (MP3 / WAV / M4A)
  * ==========================================================
  */
 
@@ -16,7 +17,7 @@ class WeddingAudioEngine {
   constructor() {
     this.ctx = null;
     this.isPlaying = false;
-    this.currentTrack = 'ullam-paadum-yt'; // Default: Ullam Paadum - Wedding Song | 2 States
+    this.currentTrack = 'ullam-paadum-yt'; // Default: Ullam Paadum (2 States)
     this.volume = 0.85;
     this.timerId = null;
     this.activeNodes = [];
@@ -27,6 +28,7 @@ class WeddingAudioEngine {
     this.ytPlayer = null;
     this.ytReady = false;
     this.ytVideoId = 'e8dLwwJ1dsE';
+    this.startTime = 15; // User requested: trimmed from 00:15 onwards
 
     // Master Gain for Web Audio
     this.masterGain = null;
@@ -70,15 +72,19 @@ class WeddingAudioEngine {
           playsinline: 1,
           rel: 0,
           enablejsapi: 1,
-          modestbranding: 1
+          modestbranding: 1,
+          start: this.startTime
         },
         events: {
           onReady: (event) => {
             this.ytReady = true;
             event.target.setVolume(Math.round(this.volume * 100));
-            // If play was called before ready, start now
-            if (this.isPlaying && this.currentTrack === 'tere-bina-yt') {
-              try { event.target.playVideo(); } catch (e) {}
+            // If play was initiated before YouTube ready, play now at 15s
+            if (this.isPlaying && (this.currentTrack === 'ullam-paadum-yt' || this.currentTrack === 'tere-bina-yt')) {
+              try {
+                event.target.seekTo(this.startTime, true);
+                event.target.playVideo();
+              } catch (e) {}
             }
           },
           onStateChange: (event) => {
@@ -86,7 +92,7 @@ class WeddingAudioEngine {
               this.isPlaying = true;
               this.onStateChange(true);
             } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
-              if (this.currentTrack === 'tere-bina-yt') {
+              if (this.currentTrack === 'ullam-paadum-yt' || this.currentTrack === 'tere-bina-yt') {
                 this.isPlaying = false;
                 this.onStateChange(false);
               }
@@ -94,8 +100,7 @@ class WeddingAudioEngine {
           },
           onError: (e) => {
             console.log('YouTube notice: Falling back to auspicious procedural raga', e);
-            // Fallback gracefully to Web Audio so guest never suffers silence
-            if (this.isPlaying && this.currentTrack === 'tere-bina-yt') {
+            if (this.isPlaying && (this.currentTrack === 'ullam-paadum-yt' || this.currentTrack === 'tere-bina-yt')) {
               this.startSynthesizerTrack();
             }
           }
@@ -137,15 +142,19 @@ class WeddingAudioEngine {
     this.isPlaying = true;
 
     if (this.currentTrack === 'ullam-paadum-yt' || this.currentTrack === 'tere-bina-yt') {
-      // 1. Primary: Play requested YouTube track "Ullam Paadum - Wedding Song | 2 States"
+      // Primary: Play YouTube track "Ullam Paadum - Wedding Song | 2 States" from 15s
       if (this.ytPlayer && this.ytReady && typeof this.ytPlayer.playVideo === 'function') {
         try {
+          const current = this.ytPlayer.getCurrentTime ? this.ytPlayer.getCurrentTime() : 0;
+          if (current < 1) {
+            this.ytPlayer.seekTo(this.startTime, true);
+          }
           this.ytPlayer.playVideo();
         } catch (e) {
           this.startSynthesizerTrack();
         }
       } else {
-        // If YT is still buffering or offline, start procedural auspicious mangalam immediately
+        // Fallback until YT loads
         this.startSynthesizerTrack();
       }
     } else if (this.isCustom && this.customAudioElement) {
@@ -189,7 +198,7 @@ class WeddingAudioEngine {
     this.isCustom = false;
     this.currentTrack = trackKey;
 
-    if (trackKey !== 'tere-bina-yt') {
+    if (trackKey !== 'ullam-paadum-yt' && trackKey !== 'tere-bina-yt') {
       if (this.ytPlayer && this.ytReady && typeof this.ytPlayer.stopVideo === 'function') {
         try { this.ytPlayer.stopVideo(); } catch (e) {}
       }
@@ -217,14 +226,12 @@ class WeddingAudioEngine {
   startSynthesizerTrack() {
     this.stopSynthesizerTrack();
 
-    if (this.currentTrack === 'shiv-mangalam' || this.currentTrack === 'tere-bina-yt') {
-      this.playRoyalRaga();
+    if (this.currentTrack === 'shiv-mangalam' || this.currentTrack === 'ullam-paadum-yt' || this.currentTrack === 'tere-bina-yt') {
+      this.playShivMangalam();
     } else if (this.currentTrack === 'rajputana-sitar') {
       this.playRajputanaSitar();
     } else if (this.currentTrack === 'celestial-harp') {
-      this.playCelestialHarp();
-    } else {
-      this.playRoyalRaga();
+      this.playCelestialSymphony();
     }
   }
 
@@ -236,328 +243,240 @@ class WeddingAudioEngine {
     this.activeNodes.forEach(node => {
       try {
         if (node.stop) node.stop();
-        if (node.disconnect) node.disconnect();
+        node.disconnect();
       } catch (e) {}
     });
     this.activeNodes = [];
   }
 
-  // --- PROCEDURAL TRACK 1: Royal Raga (Shehnai, Sitar & Flute in Raag Yaman) ---
-  playRoyalRaga() {
-    const ctx = this.ctx;
-    if (!ctx) return;
-    const now = ctx.currentTime;
+  onStateChange(isPlaying) {
+    const disc = document.getElementById('audio-disc');
+    const playIcon = document.getElementById('play-icon');
+    const equalizer = document.getElementById('equalizer');
 
-    // Tanpura Drone (Sa & Pa continuous warm harmonic drone)
-    const droneFreqs = [146.83, 220.00, 293.66]; // D3, A3, D4
-    droneFreqs.forEach(freq => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(freq, now);
+    if (disc) disc.classList.toggle('spinning', isPlaying);
+    if (equalizer) equalizer.classList.toggle('active', isPlaying);
+    if (playIcon) {
+      playIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+    }
+  }
 
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(450, now);
+  /**
+   * Sound 1: Shiv-Shakti Mangalam (Auspicious Raag Yaman)
+   */
+  playShivMangalam() {
+    if (!this.ctx) return;
+    const baseFreq = 146.83; // D3 (Auspicious Sa)
+    this.startTanpuraDrone(baseFreq);
 
-      gain.gain.setValueAtTime(0.04, now);
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.masterGain);
-
-      osc.start();
-      this.activeNodes.push(osc, gain, filter);
-    });
-
-    const ragaScale = [
-      293.66, // D4 (Sa)
-      329.63, // E4 (Re)
-      369.99, // F#4 (Ga)
-      440.00, // A4 (Pa)
-      493.88, // B4 (Dha)
-      587.33, // D5 (High Sa)
-      659.25, // E5 (High Re)
-      739.99  // F#5 (High Ga)
-    ];
-
-    const melodyPattern = [
-      { note: 0, dur: 1.2 },
-      { note: 1, dur: 0.8 },
-      { note: 2, dur: 1.6 },
-      { note: 3, dur: 1.0 },
-      { note: 4, dur: 1.4 },
-      { note: 5, dur: 2.0 },
-      { note: 4, dur: 1.0 },
-      { note: 3, dur: 1.2 },
-      { note: 2, dur: 1.8 },
-      { note: 1, dur: 0.8 },
-      { note: 0, dur: 2.4 },
-      { note: 2, dur: 0.7 },
-      { note: 3, dur: 0.7 },
-      { note: 4, dur: 0.9 },
-      { note: 5, dur: 1.8 },
-      { note: 6, dur: 1.2 },
-      { note: 5, dur: 2.5 }
-    ];
-
+    const yamanScale = [146.83, 164.81, 185.00, 207.65, 220.00, 246.94, 277.18, 293.66];
     let noteIdx = 0;
 
-    const playNextNote = () => {
+    const playFlute = () => {
       if (!this.isPlaying) return;
-
-      const item = melodyPattern[noteIdx % melodyPattern.length];
-      const freq = ragaScale[item.note];
-      const duration = item.dur;
-
-      const osc1 = ctx.createOscillator();
-      const osc2 = ctx.createOscillator();
-      const noteGain = ctx.createGain();
-
-      osc1.type = 'sine'; // Bamboo flute fundamental
-      osc1.frequency.setValueAtTime(freq, ctx.currentTime);
-
-      osc2.type = 'triangle'; // Shehnai overtone
-      osc2.frequency.setValueAtTime(freq * 2, ctx.currentTime);
-
-      const nextItem = melodyPattern[(noteIdx + 1) % melodyPattern.length];
-      const nextFreq = ragaScale[nextItem.note];
-      osc1.frequency.exponentialRampToValueAtTime(
-        (freq * 0.98 + nextFreq * 0.02),
-        ctx.currentTime + duration * 0.8
-      );
-
-      const curTime = ctx.currentTime;
-      noteGain.gain.setValueAtTime(0.001, curTime);
-      noteGain.gain.exponentialRampToValueAtTime(0.18, curTime + 0.15);
-      noteGain.gain.exponentialRampToValueAtTime(0.001, curTime + duration);
-
-      osc1.connect(noteGain);
-      osc2.connect(noteGain);
-      noteGain.connect(this.masterGain);
-
-      osc1.start(curTime);
-      osc2.start(curTime);
-      osc1.stop(curTime + duration);
-      osc2.stop(curTime + duration);
-
-      if (item.note === 5 || item.note === 0) {
-        this.playTempleBell(curTime, freq * 2);
-      }
-
-      noteIdx++;
+      const freq = yamanScale[noteIdx % yamanScale.length] * 2;
+      this.triggerFluteNote(freq, 2.8);
+      noteIdx = (noteIdx + Math.floor(Math.random() * 3) + 1) % yamanScale.length;
     };
 
-    playNextNote();
-    this.timerId = setInterval(playNextNote, 1300);
+    playFlute();
+    this.timerId = setInterval(playFlute, 2200);
   }
 
-  // --- PROCEDURAL TRACK 2: Rajputana Sitar & Flute ---
+  /**
+   * Sound 2: Rajputana Sitar & Darbari
+   */
   playRajputanaSitar() {
-    const ctx = this.ctx;
-    if (!ctx) return;
-    const now = ctx.currentTime;
+    if (!this.ctx) return;
+    const darbariScale = [130.81, 146.83, 155.56, 174.61, 196.00, 207.65, 233.08, 261.63];
+    this.startTanpuraDrone(130.81);
 
-    const droneFreqs = [138.59, 207.65, 277.18];
-    droneFreqs.forEach(freq => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(freq, now);
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(380, now);
-
-      gain.gain.setValueAtTime(0.045, now);
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.masterGain);
-
-      osc.start();
-      this.activeNodes.push(osc, gain, filter);
-    });
-
-    const sitarScale = [277.18, 293.66, 349.23, 415.30, 440.00, 554.37, 587.33];
-    const sitarNotes = [0, 1, 2, 3, 2, 4, 3, 5, 4, 3, 2, 1, 0, 3, 5];
-    let sIdx = 0;
-
-    const playSitarPluck = () => {
+    let step = 0;
+    const playPluck = () => {
       if (!this.isPlaying) return;
-      const freq = sitarScale[sitarNotes[sIdx % sitarNotes.length]];
-      const curTime = ctx.currentTime;
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(freq, curTime);
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.setValueAtTime(freq * 2.2, curTime);
-      filter.Q.value = 4.0;
-
-      gain.gain.setValueAtTime(0.22, curTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, curTime + 1.6);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.masterGain);
-
-      osc.start(curTime);
-      osc.stop(curTime + 1.7);
-
-      if (sIdx % 4 === 0) {
-        this.playTempleBell(curTime, 1108.7);
-      }
-
-      sIdx++;
+      const freq = darbariScale[step % darbariScale.length] * 2;
+      this.triggerSitarPluck(freq);
+      step = (step + 1) % darbariScale.length;
     };
 
-    playSitarPluck();
-    this.timerId = setInterval(playSitarPluck, 550);
+    playPluck();
+    this.timerId = setInterval(playPluck, 1400);
   }
 
-  // --- PROCEDURAL TRACK 3: Celestial Harp ---
-  playCelestialHarp() {
-    const ctx = this.ctx;
-    if (!ctx) return;
-    const arpeggio = [
-      261.63, 329.63, 392.00, 523.25,
-      293.66, 349.23, 440.00, 587.33,
-      329.63, 392.00, 493.88, 659.25,
-      349.23, 440.00, 523.25, 698.46
+  /**
+   * Sound 3: Celestial Symphony & Harp
+   */
+  playCelestialSymphony() {
+    if (!this.ctx) return;
+    const arpeggio = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99];
+    let idx = 0;
+
+    const playArp = () => {
+      if (!this.isPlaying) return;
+      const freq = arpeggio[idx % arpeggio.length];
+      this.triggerHarpNote(freq);
+      idx++;
+    };
+
+    playArp();
+    this.timerId = setInterval(playArp, 450);
+  }
+
+  /**
+   * Tanpura Drone Generator
+   */
+  startTanpuraDrone(freq) {
+    const osc1 = this.ctx.createOscillator();
+    const osc2 = this.ctx.createOscillator();
+    const gainNode = this.ctx.createGain();
+
+    osc1.type = 'sawtooth';
+    osc1.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+    osc2.type = 'sawtooth';
+    osc2.frequency.setValueAtTime(freq * 1.5, this.ctx.currentTime); // Pa (Fifth)
+
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(380, this.ctx.currentTime);
+
+    gainNode.gain.setValueAtTime(0.08, this.ctx.currentTime);
+
+    osc1.connect(filter);
+    osc2.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(this.masterGain);
+
+    osc1.start();
+    osc2.start();
+
+    this.activeNodes.push(osc1, osc2, gainNode, filter);
+  }
+
+  /**
+   * Bansuri / Flute Note
+   */
+  triggerFluteNote(freq, duration) {
+    if (!this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+    const vib = this.ctx.createOscillator();
+    const vibGain = this.ctx.createGain();
+    vib.frequency.setValueAtTime(5.2, this.ctx.currentTime); // 5.2Hz Indian Flute vibrato
+    vibGain.gain.setValueAtTime(4.5, this.ctx.currentTime);
+    vib.connect(osc.frequency);
+    vib.start();
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1400, this.ctx.currentTime);
+
+    const now = this.ctx.currentTime;
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.18, now + 0.45);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.masterGain);
+
+    osc.start(now);
+    osc.stop(now + duration);
+    vib.stop(now + duration);
+  }
+
+  /**
+   * Sitar Pluck with Resonant Jawari
+   */
+  triggerSitarPluck(freq) {
+    if (!this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+    const now = this.ctx.currentTime;
+    gain.gain.setValueAtTime(0.22, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.6);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+
+    osc.start(now);
+    osc.stop(now + 1.6);
+  }
+
+  /**
+   * Harp Pluck
+   */
+  triggerHarpNote(freq) {
+    if (!this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+    const now = this.ctx.currentTime;
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.1);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+
+    osc.start(now);
+    osc.stop(now + 1.1);
+  }
+
+  /**
+   * Authentic Indian Temple Bell (Mandir Ghanta) Synthesizer
+   */
+  playIndianTempleGhanta() {
+    this.init();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const fundamental = 432; // Auspicious 432 Hz bronze bell resonance
+
+    const partials = [
+      { ratio: 1.0,  gain: 0.55, decay: 4.8 },
+      { ratio: 1.48, gain: 0.35, decay: 3.9 },
+      { ratio: 2.01, gain: 0.28, decay: 3.2 },
+      { ratio: 2.76, gain: 0.22, decay: 2.6 },
+      { ratio: 3.82, gain: 0.16, decay: 2.0 },
+      { ratio: 5.12, gain: 0.10, decay: 1.4 },
+      { ratio: 6.84, gain: 0.06, decay: 1.0 },
+      { ratio: 8.92, gain: 0.04, decay: 0.7 }
     ];
 
-    let arpIdx = 0;
-    const playHarpNote = () => {
-      if (!this.isPlaying) return;
+    partials.forEach(p => {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
 
-      const freq = arpeggio[arpIdx % arpeggio.length];
-      const curTime = ctx.currentTime;
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(fundamental * p.ratio, now);
 
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(freq, curTime);
-
-      gain.gain.setValueAtTime(0.2, curTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, curTime + 1.4);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(p.gain * 0.45, now + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
 
       osc.connect(gain);
       gain.connect(this.masterGain);
 
-      osc.start(curTime);
-      osc.stop(curTime + 1.5);
-
-      arpIdx++;
-    };
-
-    playHarpNote();
-    this.timerId = setInterval(playHarpNote, 320);
+      osc.start(now);
+      osc.stop(now + p.decay + 0.1);
+    });
   }
 
-  playIndianTempleGhanta() {
-    this.init();
-    if (!this.ctx) return;
-    const now = this.ctx.currentTime;
-
-    // Helper to synthesize a single heavy Indian bronze temple bell strike
-    const triggerGhantaStroke = (strikeTime, volumeScale = 1.0, basePitch = 432) => {
-      const duration = 5.2;
-
-      // 1. Strike transient (Bronze Clapper impact clink)
-      try {
-        const strikeOsc = this.ctx.createOscillator();
-        const strikeGain = this.ctx.createGain();
-        const strikeFilter = this.ctx.createBiquadFilter();
-
-        strikeOsc.type = 'triangle';
-        strikeOsc.frequency.setValueAtTime(2800, strikeTime);
-        strikeFilter.type = 'bandpass';
-        strikeFilter.frequency.setValueAtTime(3100, strikeTime);
-        strikeFilter.Q.setValueAtTime(6, strikeTime);
-
-        strikeGain.gain.setValueAtTime(0.18 * volumeScale, strikeTime);
-        strikeGain.gain.exponentialRampToValueAtTime(0.0001, strikeTime + 0.08);
-
-        strikeOsc.connect(strikeFilter);
-        strikeFilter.connect(strikeGain);
-        strikeGain.connect(this.masterGain);
-
-        strikeOsc.start(strikeTime);
-        strikeOsc.stop(strikeTime + 0.1);
-      } catch (e) {}
-
-      // 2. Harmonic and Inharmonic Bronze Bell Overtones with Natural Beating
-      // Natural cast kansa (bronze) frequencies around 432 Hz
-      const harmonics = [
-        { f: basePitch * 0.625, g: 0.32, decay: 5.2 },  // Deep Hum tone (~270 Hz)
-        { f: basePitch,         g: 0.40, decay: 4.8 },  // Prime fundamental (432 Hz)
-        { f: basePitch + 1.6,   g: 0.36, decay: 4.8 },  // Beating oscillator (1.6 Hz acoustic flutter)
-        { f: basePitch * 1.2,   g: 0.28, decay: 4.0 },  // Tierce (minor 3rd ~518 Hz)
-        { f: basePitch * 1.5,   g: 0.22, decay: 3.5 },  // Quint (~648 Hz)
-        { f: basePitch * 2.0,   g: 0.20, decay: 3.2 },  // Octave nominal (864 Hz)
-        { f: basePitch * 2.01,  g: 0.16, decay: 3.2 },  // Octave beating
-        { f: basePitch * 3.0,   g: 0.10, decay: 2.2 }   // Super-octave (~1296 Hz)
-      ];
-
-      harmonics.forEach(h => {
-        try {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(h.f, strikeTime);
-
-          // Fast rise, long exponential bell decay
-          gain.gain.setValueAtTime(0.001, strikeTime);
-          gain.gain.linearRampToValueAtTime(h.g * volumeScale * 0.4, strikeTime + 0.008);
-          gain.gain.exponentialRampToValueAtTime(0.0001, strikeTime + h.decay);
-
-          osc.connect(gain);
-          gain.connect(this.masterGain);
-
-          osc.start(strikeTime);
-          osc.stop(strikeTime + h.decay);
-        } catch (e) {}
-      });
-    };
-
-    // Traditional Devasthanam Double Bell Strike ("Toll... Toll...")
-    triggerGhantaStroke(now, 1.0, 432);             // First heavy strike
-    triggerGhantaStroke(now + 0.68, 0.75, 432);      // Second resonant strike
-  }
-
-  playTempleBell(time, freq) {
+  playTempleBell() {
     this.playIndianTempleGhanta();
-  }
-
-  onStateChange(playing) {
-    const disc = document.getElementById('audio-disc');
-    const playIcon = document.getElementById('play-icon');
-    const eq = document.getElementById('equalizer');
-
-    if (disc) {
-      if (playing) disc.classList.add('spinning');
-      else disc.classList.remove('spinning');
-    }
-
-    if (playIcon) {
-      if (playing) {
-        playIcon.className = 'fa-solid fa-pause';
-      } else {
-        playIcon.className = 'fa-solid fa-play';
-      }
-    }
-
-    if (eq) {
-      if (playing) eq.classList.add('active');
-      else eq.classList.remove('active');
-    }
   }
 }
 
-// Global instance
+// Global Audio Engine Instance
 window.weddingAudio = new WeddingAudioEngine();
